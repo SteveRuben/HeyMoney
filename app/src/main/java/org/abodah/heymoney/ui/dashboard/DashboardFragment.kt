@@ -189,7 +189,7 @@ class DashboardFragment :
                 }
                 is ViewState.Error -> {
                     binding.root.snack(
-                        string = R.string.text_error
+                        string = R.string.failed_transaction_export
                     )
                 }
                 is ViewState.Empty -> {

@@ -80,7 +80,7 @@ class TransactionDetailsFragment : BaseFragment<FragmentTransactionDetailsBindin
                 }
                 is DetailState.Error -> {
                     binding.root.snack(
-                        string = R.string.text_error
+                        string = R.string.failed_transaction_export
                     )
                 }
                 DetailState.Empty -> {
