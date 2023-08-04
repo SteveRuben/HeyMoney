@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HeyMoney</string>
+    <string name="text_save_transaction">Enregistrer</string>
+    <string name="text_total_income">Revenu total</string>
+    <string name="text_total_expense">Dépenses totales</string>
+    <string name="text_total_balance">Solde</string>
+    <string name="text_recent_transactions">Transactions récentes</string>
+    <string name="text_view_all">Voir tout</string>
+    <string name="text_expense_when">Date</string>
+    <string name="text_expense_amount">Montant</string>
+    <string name="text_expense_transaction_type">Type de transaction</string>
+    <string name="text_expense_tag">Catégorie</string>
+    <string name="text_expense_note">Note</string>
+    <string name="success_expense_saved">Transaction enregistrée</string>
+    <string name="success_transaction_delete">Transaction supprimée</string>
+    <string name="text_title">Titre</string>
+    <string name="text_about">À propos</string>
+    <string name="text_filter">Filtrer</string>
+    <string name="text_edit">Modifier</string>
+    <string name="text_createdAt">Créée le</string>
+    <string name="success_transaction_export">Transaction exportée</string>
+    <string name="failed_transaction_export">Échec de l\'exportation ☹️</string>
+    <string name="text_open">Ouvrir</string>
+    <string name="text_about_license">Sous licence MIT</string>
+    <string name="text_about_visit_title">Code source</string>
+    <string name="text_share_as_text">Partager (texte)</string>
+    <string name="text_share_as_image">Partager (image)</string>
+    <string name="text_delete">Supprimer</string>
+    <string name="text_share">Partager</string>
+    <string name="share_message">\%s \nMontant: %s, \nType de transaction: %s, \nCategorie: %s, \nDate: %s, \nNote: %s, \nCréée le: %s \n\nCodeSource: https://github.com/tryptich/HeyMoney</string>
+    <string name="text_transaction_empty_title">Aucune transaction pour le moment !</string>
+    <string name="text_transaction_empty_desc">Les transactions seront visibles ici</string>
+    <string name="text_export_csv">Exporter (CSV)</string>
+    <string name="text_add_transaction">Ajouter une transaction</string>
+    <string name="text_undo">Annuler</string>
+    <string name="text_error_occurred">Une erreur s\'est produite</string>
+    <string name="action_settings">Paramètres</string>
+</resources>
