@@ -44,6 +44,7 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.TransactionVH
 
             transactionName.text = item.title
             transactionCategory.text = item.tag
+            transactionDate.text = item.date
 
             when (item.transactionType) {
                 "Income" -> {
