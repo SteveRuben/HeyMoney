@@ -69,7 +69,7 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.TransactionVH
 
             when (item.tag) {
                 "Housing" -> {
-                    transactionIconView.setImageResource(R.drawable.ic_food)
+                    transactionIconView.setImageResource(R.drawable.ic_housing)
                 }
                 "Transportation" -> {
                     transactionIconView.setImageResource(R.drawable.ic_transport)
