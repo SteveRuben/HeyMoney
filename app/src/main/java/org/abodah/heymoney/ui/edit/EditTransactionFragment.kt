@@ -18,6 +18,7 @@ import org.abodah.heymoney.utils.Constants
 import org.abodah.heymoney.utils.parseDouble
 import org.abodah.heymoney.utils.snack
 import org.abodah.heymoney.utils.transformIntoDatePicker
+import java.text.DateFormat
 import java.util.Date
 
 @AndroidEntryPoint
@@ -38,7 +39,7 @@ class EditTransactionFragment : BaseFragment<FragmentEditTransactionBinding, Tra
         addTransactionLayout.etAmount.setText(transaction.amount.toString())
         addTransactionLayout.etTransactionType.setText(transaction.transactionType, false)
         addTransactionLayout.etTag.setText(transaction.tag, false)
-        addTransactionLayout.etWhen.setText(transaction.date)
+        addTransactionLayout.etWhen.setText(transaction.dateFormatted)
         addTransactionLayout.etNote.setText(transaction.note)
     }
 
@@ -83,9 +84,6 @@ class EditTransactionFragment : BaseFragment<FragmentEditTransactionBinding, Tra
                     tag.isEmpty() -> {
                         this.etTag.error = "Tag must not be empty"
                     }
-                    date.isEmpty() -> {
-                        this.etWhen.error = "Date must not be empty"
-                    }
                     note.isEmpty() -> {
                         this.etNote.error = "Note must not be empty"
                     }
@@ -111,7 +109,7 @@ class EditTransactionFragment : BaseFragment<FragmentEditTransactionBinding, Tra
         val amount = parseDouble(it.etAmount.text.toString())
         val transactionType = it.etTransactionType.text.toString()
         val tag = it.etTag.text.toString()
-        val date = it.etWhen.text.toString()
+        val date = DateFormat.getDateInstance().parse(it.etWhen.text.toString()).time
         val note = it.etNote.text.toString()
 
         return Transaction(
