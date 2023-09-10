@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- dark variants -->
+    <color name="appbar_headline">#FFFFFF</color>
+    <color name="appbar_background">#1E1E1E</color>
+    <color name="cardview_background">#1E1E1E</color>
+    <color name="icon_stroke_color">#FFFFFF</color>
+    <color name="icon_view_background">#151515</color>
+    <color name="main_background">#151515</color>
+    <color name="primary">#0C0C0C</color>
+    <color name="textfield_background">#1E1E1E</color>
+    <color name="textfield_dropdown_background">#131313</color>
+</resources>

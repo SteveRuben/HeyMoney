@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- common -->
+    <color name="income">#6FCF97</color>
+    <color name="expense">#EB5757</color>
+
+    <!-- dark theme -->
+    <color name="accent">#1B567A</color>
+    <color name="datepicker_background">#404040</color>
+
+    <!-- light variants -->
+    <color name="appbar_headline">#000000</color>
+    <color name="appbar_background">#FFFFFF</color>
+    <color name="cardview_background">@color/white</color>
+    <color name="icon_stroke_color">#000000</color>
+    <color name="icon_view_background">#F9F9F9</color>
+    <color name="main_background">#F9F9F9</color>
+    <color name="primary">@color/blue_500</color>
+    <color name="textfield_background">#FFFFFF</color>
+    <color name="textfield_dropdown_background">#2A403C</color>
+
+    <!-- remaining colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue_500">#006AF6</color>
     <color name="surface">#FFFFFF</color>
     <color name="background">#f9f9f9</color>
-    <color name="income">#6FCF97</color>
-    <color name="expense">#EB5757</color>
 </resources>

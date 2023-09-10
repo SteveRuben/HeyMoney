@@ -10,8 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/detail_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:layout_height="wrap_content">
 
 
         <TextView
@@ -34,7 +33,6 @@
             android:layout_marginTop="@dimen/dimen_8"
             android:fontFamily="@font/open_sans_regular"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/caption_title"
             tools:text="Samsung level earphones" />
@@ -60,7 +58,6 @@
             android:layout_marginTop="@dimen/dimen_8"
             android:fontFamily="@font/open_sans_regular"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/caption_amount"
             tools:text="Amount" />
@@ -86,7 +83,6 @@
             android:layout_marginTop="@dimen/dimen_8"
             android:fontFamily="@font/open_sans_regular"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/caption_type"
             tools:text="Income" />
@@ -112,7 +108,6 @@
             android:layout_marginTop="@dimen/dimen_8"
             android:fontFamily="@font/open_sans_regular"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/caption_tag"
             tools:text="Personal Spendings" />
@@ -138,7 +133,6 @@
             android:layout_marginTop="@dimen/dimen_8"
             android:fontFamily="@font/open_sans_regular"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/caption_when"
             tools:text="Sunday, 18 Dec 2021" />
@@ -163,7 +157,6 @@
             android:layout_marginTop="@dimen/dimen_8"
             android:fontFamily="@font/open_sans_regular"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/caption_note"
             tools:text="Note" />
@@ -188,7 +181,6 @@
             android:layout_marginTop="@dimen/dimen_8"
             android:fontFamily="@font/open_sans_regular"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/caption_createdAt"
             tools:text="Sunday, 18 Dec 2021" />

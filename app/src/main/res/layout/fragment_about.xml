@@ -97,7 +97,6 @@
             android:fontFamily="@font/open_sans_regular"
             android:text="@string/text_about_visit_url"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:textColor="@color/blue_500"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/visitTitle" />
 

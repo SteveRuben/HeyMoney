@@ -271,15 +271,15 @@ class DashboardFragment :
                     when (position) {
                         0 -> {
                             viewModel.overall()
-                            (view as TextView).setTextColor(resources.getColor(R.color.black))
+                            (view as TextView).setTextColor(resources.getColor(R.color.appbar_headline))
                         }
                         1 -> {
                             viewModel.allIncome()
-                            (view as TextView).setTextColor(resources.getColor(R.color.black))
+                            (view as TextView).setTextColor(resources.getColor(R.color.appbar_headline))
                         }
                         2 -> {
                             viewModel.allExpense()
-                            (view as TextView).setTextColor(resources.getColor(R.color.black))
+                            (view as TextView).setTextColor(resources.getColor(R.color.appbar_headline))
                         }
                     }
                 }

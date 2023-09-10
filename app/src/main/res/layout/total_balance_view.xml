@@ -1,11 +1,10 @@
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/total_balance_view"
     android:layout_width="match_parent"
     android:layout_height="124dp"
     android:layout_margin="@dimen/dimen_8"
-    app:cardBackgroundColor="@color/surface"
     app:cardElevation="@dimen/dimen_0">
 
     <LinearLayout
@@ -36,4 +35,4 @@
 
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

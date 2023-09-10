@@ -9,7 +9,7 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/spinner"
-        android:iconTint="@color/black"
+        android:iconTint="?colorControlNormal"
         android:title="@string/text_filter"
         app:actionViewClass="androidx.appcompat.widget.AppCompatSpinner"
         app:showAsAction="always" />
