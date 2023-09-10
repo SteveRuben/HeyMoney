@@ -1,7 +1,59 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.HeyMoney" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    </style>
+
+    <style name="Theme.HeyMoney" parent="Base.Theme.HeyMoney" >
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryContainer">@color/accent</item>
+        <item name="colorOnPrimaryContainer">@color/white</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSurface">@color/primary</item>
+
+        <item name="materialCardViewStyle">@style/Widget.HeyMoney.CardView</item>
+
+        <item name="android:colorBackground">@color/main_background</item>
+        <item name="android:datePickerDialogTheme">@style/ThemeOverlay.HeyMoney.MaterialCalendar</item>
+        <item name="android:statusBarColor">@color/appbar_background</item>
+    </style>
+
+    <style name="ThemeOverlay.HeyMoney.MaterialCalendar" parent="ThemeOverlay.Material3.MaterialCalendar">
+        <item name="android:datePickerStyle">@style/Widget.HeyMoney.DatePicker</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorSurface">@color/datepicker_background</item>
+    </style>
+
+    <style name="Widget.HeyMoney.DatePicker" parent="@android:style/Widget.Material.DatePicker">
+        <item name="android:headerBackground">@color/primary</item>
+    </style>
+
+    <style name="Widget.HeyMoney.TextInputLayout.ExposedDropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="boxBackgroundColor">@color/textfield_background</item>
+        <item name="hintTextColor">?attr/colorOnSurface</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.HeyMoney.TextInputLayout.ExposedDropdownMenu</item>
+    </style>
+
+    <style name="ThemeOverlay.HeyMoney.TextInputLayout.ExposedDropdownMenu" parent="ThemeOverlay.Material3.AutoCompleteTextView.FilledBox">
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorSurface">@color/textfield_dropdown_background</item>
+        <item name="editTextStyle">@style/Widget.Material3.TextInputEditText.FilledBox</item>
+    </style>
+
+    <style name="PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/accent</item>
+        <item name="rippleColor">@color/primary</item>
+    </style>
+
+    <style name="PrimaryEditText" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@color/textfield_background</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.HeyMoney.TextInputLayout</item>
+    </style>
+
+    <style name="ThemeOverlay.HeyMoney.TextInputLayout" parent="">
+        <item name="android:textColorHighlight">@color/accent</item>
+        <item name="colorControlActivated">@color/accent</item>
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorSurface">@color/textfield_dropdown_background</item>
+        <item name="editTextStyle">@style/Widget.Material3.TextInputEditText.FilledBox</item>
     </style>
 </resources>

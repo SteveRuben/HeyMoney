@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     tools:context=".ui.dashboard.DashboardFragment">
 
 
@@ -109,11 +108,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/dimen_32"
-        android:backgroundTint="@color/blue_500"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_baseline_add"
         app:borderWidth="0dp"
-        app:tint="@color/white"
         tools:ignore="UnusedAttribute" />
 
 

@@ -1,18 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.HeyMoney" parent="Theme.Material3.DayNight.NoActionBar">
-<!--        <bool name="lightNavEnabled">true</bool>-->
     </style>
 
     <style name="Theme.HeyMoney" parent="Base.Theme.HeyMoney" >
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/blue_500</item>
+        <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/white</item>
         <item name="colorOnPrimary">@color/black</item>
-        <item name="colorAccent">@color/blue_500</item>
+        <item name="colorPrimaryContainer">@color/primary</item>
+        <item name="colorOnPrimaryContainer">@color/white</item>
+        <item name="colorAccent">@color/primary</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/surface</item>
-        <item name="android:navigationBarColor" tools:targetApi="o">@color/surface</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/appbar_background</item>
+        <item name="android:navigationBarColor" tools:targetApi="o">@color/white</item>
+
+        <item name="android:colorBackground">@color/main_background</item>
+        <item name="materialCardViewStyle">@style/Widget.HeyMoney.CardView</item>
     </style>
 
     <style name="PrimaryButton" parent="Widget.MaterialComponents.Button">
@@ -27,10 +31,24 @@
 
     <style name="PrimaryEditText" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="fontFamily">@font/open_sans_regular</item>
-        <item name="boxBackgroundColor">@color/background</item>
+        <item name="boxBackgroundColor">@color/white</item>
         <item name="hintAnimationEnabled">true</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="backgroundTint">@color/blue_500</item>
+    </style>
+
+    <style name="Widget.HeyMoney.CardView" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/cardview_background</item>
+        <item name="shapeAppearance">?attr/shapeAppearanceCornerSmall</item>
+    </style>
+
+    <style name="Widget.HeyMoney.TextInputLayout.ExposedDropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="boxBackgroundColor">@color/textfield_background</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.HeyMoney.TextInputLayout.ExposedDropdownMenu</item>
+    </style>
+
+    <style name="ThemeOverlay.HeyMoney.TextInputLayout.ExposedDropdownMenu" parent="ThemeOverlay.Material3.AutoCompleteTextView.FilledBox">
+        <item name="editTextStyle">@style/Widget.Material3.TextInputEditText.FilledBox</item>
     </style>
 </resources>

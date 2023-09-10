@@ -10,7 +10,7 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/surface"
+        android:backgroundTint="@color/appbar_background"
         app:liftOnScroll="true"
         tools:ignore="UnusedAttribute">
 
