@@ -7,6 +7,7 @@ import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import java.text.DateFormat
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -56,8 +57,10 @@ fun TextInputEditText.transformIntoDatePicker(
             myCalendar.set(Calendar.YEAR, year)
             myCalendar.set(Calendar.MONTH, monthOfYear)
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-            val sdf = SimpleDateFormat(format, Locale.UK)
-            setText(sdf.format(myCalendar.time))
+            myCalendar.set(Calendar.HOUR_OF_DAY, 0)
+            myCalendar.set(Calendar.MINUTE, 0)
+            myCalendar.set(Calendar.SECOND, 0)
+            setText(DateFormat.getDateInstance().format(myCalendar.time))
         }
 
     setOnClickListener {

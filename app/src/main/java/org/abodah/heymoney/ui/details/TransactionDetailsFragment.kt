@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -95,7 +94,7 @@ class TransactionDetailsFragment : BaseFragment<FragmentTransactionDetailsBindin
         amount.text = (transaction.amount).toString()
         type.text = transaction.transactionType
         tag.text = transaction.tag
-        date.text = transaction.date
+        date.text = transaction.dateFormatted
         note.text = transaction.note
         createdAt.text = transaction.createdAtDateFormat
 

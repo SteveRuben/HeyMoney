@@ -43,6 +43,7 @@ import org.abodah.heymoney.utils.snack
 import org.abodah.heymoney.utils.viewState.ExportState
 import org.abodah.heymoney.utils.viewState.ViewState
 import java.lang.Math.abs
+import java.text.SimpleDateFormat
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -315,7 +316,9 @@ class DashboardFragment :
             }
 
             R.id.action_export -> {
-                val csvFileName = "_${System.currentTimeMillis()}"
+                val exportTime = System.currentTimeMillis()
+                val readableTime = SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(exportTime)
+                val csvFileName = getString(R.string.app_name) + "_${readableTime}"
                 csvCreateRequestLauncher.launch(csvFileName)
                 return true
             }

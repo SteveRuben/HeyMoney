@@ -17,6 +17,8 @@ import org.abodah.heymoney.utils.Constants
 import org.abodah.heymoney.utils.parseDouble
 import org.abodah.heymoney.utils.snack
 import org.abodah.heymoney.utils.transformIntoDatePicker
+import java.text.DateFormat
+import java.time.DateTimeException
 import java.util.Date
 
 @AndroidEntryPoint
@@ -53,6 +55,10 @@ class AddTransactionFragment :
                 "dd/MM/yyyy",
                 Date()
             )
+
+            // Set current date as default for new transactions.
+            addTransactionLayout.etWhen.setText(DateFormat.getDateInstance().format(Date()))
+
             btnSaveTransaction.setOnClickListener {
                 binding.addTransactionLayout.apply {
                     val (title, amount, transactionType, tag, date, note) = getTransactionContent()
@@ -69,9 +75,6 @@ class AddTransactionFragment :
                         }
                         tag.isEmpty() -> {
                             this.etTag.error = "Tag must not be empty"
-                        }
-                        date.isEmpty() -> {
-                            this.etWhen.error = "Date must not be empty"
                         }
                         note.isEmpty() -> {
                             this.etNote.error = "Note must not be empty"
@@ -97,7 +100,7 @@ class AddTransactionFragment :
         val amount = parseDouble(it.etAmount.text.toString())
         val transactionType = it.etTransactionType.text.toString()
         val tag = it.etTag.text.toString()
-        val date = it.etWhen.text.toString()
+        val date = DateFormat.getDateInstance().parse(it.etWhen.text.toString()).time
         val note = it.etNote.text.toString()
 
         return Transaction(title, amount, transactionType, tag, date, note)

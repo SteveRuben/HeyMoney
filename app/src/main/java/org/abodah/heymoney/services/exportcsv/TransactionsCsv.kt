@@ -14,11 +14,11 @@ data class TransactionsCSV(
     @CsvBindByName(column = "tag")
     val tag: String,
     @CsvBindByName(column = "date")
-    val date: String,
+    val date: Long,
     @CsvBindByName(column = "note")
     val note: String,
     @CsvBindByName(column = "createdAt")
-    val createdAtDate: String
+    val createdAtDate: Long
 )
 
 fun List<Transaction>.toCsv() = map {
@@ -29,6 +29,6 @@ fun List<Transaction>.toCsv() = map {
         tag = it.tag,
         date = it.date,
         note = it.note,
-        createdAtDate = it.createdAtDateFormat,
+        createdAtDate = it.createdAt,
     )
 }

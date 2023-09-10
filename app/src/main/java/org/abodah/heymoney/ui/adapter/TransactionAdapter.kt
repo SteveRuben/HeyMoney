@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import org.abodah.heymoney.R
 import org.abodah.heymoney.databinding.ItemTransactionLayoutBinding
 import org.abodah.heymoney.domain.model.Transaction
+import java.text.DateFormat
+import java.util.Date
 
 class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.TransactionVH>() {
 
@@ -44,6 +46,7 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.TransactionVH
 
             transactionName.text = item.title
             transactionCategory.text = item.tag
+            transactionDate.text = DateFormat.getDateInstance().format(item.date)
 
             when (item.transactionType) {
                 "Income" -> {
@@ -69,7 +72,7 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.TransactionVH
 
             when (item.tag) {
                 "Housing" -> {
-                    transactionIconView.setImageResource(R.drawable.ic_food)
+                    transactionIconView.setImageResource(R.drawable.ic_housing)
                 }
                 "Transportation" -> {
                     transactionIconView.setImageResource(R.drawable.ic_transport)

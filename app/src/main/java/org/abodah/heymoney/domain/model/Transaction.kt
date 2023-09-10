@@ -18,7 +18,7 @@ data class Transaction(
     @ColumnInfo(name = "tag")
     var tag: String,
     @ColumnInfo(name = "date")
-    var date: String,
+    var date: Long,
     @ColumnInfo(name = "note")
     var note: String,
     @ColumnInfo(name = "createdAt")
@@ -31,4 +31,7 @@ data class Transaction(
     val createdAtDateFormat: String
         get() = DateFormat.getDateTimeInstance()
             .format(createdAt) // Date Format: Jan 11, 2021, 11:30 AM
+    val dateFormatted: String
+        get() = DateFormat.getDateInstance()
+            .format(date) // locale-dependent
 }
