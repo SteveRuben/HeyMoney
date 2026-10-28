@@ -1,0 +1,10 @@
+HeyMoney
+Copyright (C) 2026 HeyMoney contributors
+
+This program is free software licensed under the GNU General Public License v3.0 (see LICENSE).
+
+It is a modified version of Ivy Wallet (https://github.com/Ivy-Apps/ivy-wallet),
+Copyright (C) Ivy Apps contributors, also licensed under the GNU GPL v3.
+Modified from the Ivy Wallet release v2026.10.22 on 2026-10-28: renamed, restyled, and extended with bank alerts,
+receipt scanning, assistant, investment news and peer-to-peer sharing. The original copyright notices in the
+source files are kept.
