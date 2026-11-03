@@ -67,6 +67,10 @@ import com.ivy.legacy.utils.verticalSwipeListener
 import com.ivy.navigation.BudgetScreen
 import com.ivy.navigation.CategoriesScreen
 import com.ivy.navigation.IvyPreview
+import com.ivy.navigation.AlertsScreen
+import com.ivy.navigation.AssistantScreen
+import com.ivy.navigation.NewsScreen
+import com.ivy.navigation.ShareScreen
 import com.ivy.navigation.LoansScreen
 import com.ivy.navigation.PlannedPaymentsScreen
 import com.ivy.navigation.ReportScreen
@@ -533,6 +537,53 @@ private fun QuickAccess(
                 label = stringResource(R.string.loans),
             ) {
                 nav.navigateTo(LoansScreen)
+            }
+
+            Spacer(Modifier.weight(1f))
+        }
+
+        Spacer(Modifier.height(16.dp))
+
+        // Third Row: HeyMoney features
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.Top
+        ) {
+            Spacer(Modifier.weight(1f))
+
+            MoreMenuButton(
+                icon = R.drawable.ic_vue_design_magicpen,
+                label = "Assistant",
+            ) {
+                nav.navigateTo(AssistantScreen)
+            }
+
+            Spacer(Modifier.weight(1f))
+
+            MoreMenuButton(
+                icon = R.drawable.ic_vue_chart_trend_up,
+                label = "Investments",
+            ) {
+                nav.navigateTo(NewsScreen)
+            }
+
+            Spacer(Modifier.weight(1f))
+
+            MoreMenuButton(
+                icon = R.drawable.ic_vue_messages_device_msg,
+                label = "Bank alerts",
+            ) {
+                nav.navigateTo(AlertsScreen)
+            }
+
+            Spacer(Modifier.weight(1f))
+
+            MoreMenuButton(
+                icon = R.drawable.ic_vue_messages_direct,
+                label = "Share",
+            ) {
+                nav.navigateTo(ShareScreen)
             }
 
             Spacer(Modifier.weight(1f))
