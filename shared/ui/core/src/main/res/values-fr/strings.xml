@@ -136,6 +136,34 @@
     <string name="menu_subs_hint">Coût par an</string>
     <string name="menu_chart_hint">Par mois</string>
     <string name="menu_net_worth_sub">Comptes et prêts</string>
+
+    <!-- HeyMoney: Configuration (configuration restante, états honnêtes, rappel quotidien) -->
+    <string name="setup_title">Configuration</string>
+    <string name="setup_progress_count">%1$d sur %2$d étapes terminées</string>
+    <string name="setup_progress_intro">Terminez ces étapes pour tirer le maximum de HeyMoney : capture automatique de vos charges, abonnements et renouvellements.</string>
+    <string name="setup_complete">Tout ce qui peut être configuré aujourd\'hui est terminé.</string>
+    <string name="setup_state_done">Activé</string>
+    <string name="setup_state_unavailable">Pas encore disponible</string>
+    <string name="setup_action_allow">Autoriser</string>
+    <string name="setup_action_learn_more">En savoir plus</string>
+    <string name="setup_action_hide">Masquer</string>
+    <string name="setup_sms_title">SMS bancaires</string>
+    <string name="setup_sms_desc">Les SMS de votre banque sont lus sur votre téléphone pour repérer automatiquement charges et abonnements.</string>
+    <string name="setup_notif_access_title">Notifications des applis bancaires</string>
+    <string name="setup_notif_access_desc">Les notifications de vos applis bancaires sont lues sur votre téléphone, pour les banques qui n\'envoient pas de SMS.</string>
+    <string name="setup_bank_title">Connexion bancaire</string>
+    <string name="setup_bank_desc">Connectez votre banque (Plaid ou un autre fournisseur) et les transactions s\'importent toutes seules.</string>
+    <string name="setup_bank_explanation">Pas encore disponible : il faut un compte chez un fournisseur de données bancaires comme Plaid, plus un serveur HeyMoney sécurisé pour porter la connexion — aucun des deux n\'existe aujourd\'hui, il n\'y a donc aucune connexion à activer. Quand ce sera livré, vos transactions s\'importeront automatiquement au lieu de dépendre des SMS, des notifications et des relevés. En attendant, rien n\'est simulé ici.</string>
+    <string name="setup_email_title">Reçus par courriel</string>
+    <string name="setup_email_desc">Retrouvez vos abonnements en analysant les reçus et factures de votre boîte courriel.</string>
+    <string name="setup_email_explanation">Pas encore disponible : HeyMoney se connecterait à votre boîte avec votre permission et ne lirait que les messages qui ressemblent à des reçus d\'abonnement. Cette connexion exige la connexion au fournisseur courriel et sa revue de sécurité (Google, Microsoft), qui ne sont pas en place. Quand ce sera livré, les abonnements payés par carte seront retrouvés même quand votre banque n\'envoie rien.</string>
+    <string name="setup_card_title">Carte enregistrée</string>
+    <string name="setup_card_desc">Enregistrez une carte, façon Link, pour payer vos abonnements depuis HeyMoney et les suivre automatiquement.</string>
+    <string name="setup_card_explanation">Pas encore disponible : payer depuis l\'app exige un compte chez un fournisseur de paiement et un stockage de carte certifié sécurisé (PCI), plus un serveur — rien de tout cela n\'est en place aujourd\'hui, aucune carte ne peut donc être enregistrée ici. Quand ce sera livré, vous paierez un abonnement en un toucher et HeyMoney le suivra comme les autres.</string>
+    <string name="setup_reminder_title">Terminez votre configuration</string>
+    <string name="setup_reminder_text_one">Plus qu\'1 configuration pour tirer le maximum de HeyMoney.</string>
+    <string name="setup_reminder_text_many">Plus que %1$d configurations pour tirer le maximum de HeyMoney.</string>
+    <string name="setup_menu_done">Tout est prêt</string>
     <string name="advanced_features">Options avancées</string>
     <string name="quick_access">Accès rapide</string>
     <string name="savings_goal">Objectif d\'épargne</string>

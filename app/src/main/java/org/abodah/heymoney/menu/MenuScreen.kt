@@ -59,6 +59,7 @@ import com.ivy.navigation.ReportScreen
 import com.ivy.navigation.ScanReceiptScreen
 import com.ivy.navigation.SearchScreen
 import com.ivy.navigation.SettingsScreen
+import com.ivy.navigation.SetupScreen
 import com.ivy.navigation.ShareScreen
 import com.ivy.navigation.AssistantScreen
 import com.ivy.navigation.SubscriptionsScreen
@@ -68,6 +69,7 @@ import com.ivy.ui.R
 import com.ivy.wallet.ui.theme.modal.BufferModal
 import com.ivy.wallet.ui.theme.modal.BufferModalData
 import org.abodah.heymoney.networth.CurrencyNetWorth
+import org.abodah.heymoney.setup.SetupProgress
 import org.abodah.heymoney.subscriptions.formatMoney
 
 /**
@@ -95,6 +97,7 @@ fun BoxWithConstraintsScope.MenuScreen(
     val bufferAmount by viewModel.bufferAmount.collectAsState()
     val baseCurrency by viewModel.baseCurrency.collectAsState()
     val walletBalance by viewModel.walletBalance.collectAsState()
+    val setupProgress by viewModel.setupProgress.collectAsState()
 
     var bufferModalData: BufferModalData? by remember { mutableStateOf(null) }
 
@@ -162,6 +165,12 @@ fun BoxWithConstraintsScope.MenuScreen(
                         currency = baseCurrency,
                         buffer = bufferAmount
                     )
+                }
+            }
+
+            item {
+                SetupCard(progress = setupProgress) {
+                    nav.navigateTo(SetupScreen)
                 }
             }
 
@@ -429,6 +438,40 @@ private fun MonthlyChartCard(
             )
             Text(
                 text = stringResource(R.string.menu_chart_sub),
+                style = MaterialTheme.typography.bodySmall
+            )
+        }
+    }
+}
+
+@Composable
+private fun SetupCard(
+    progress: SetupProgress,
+    onClick: () -> Unit
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        onClick = onClick
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            Text(
+                text = stringResource(R.string.setup_title),
+                style = MaterialTheme.typography.bodyLarge,
+                fontWeight = FontWeight.W700
+            )
+            Text(
+                text = if (progress.isComplete) {
+                    stringResource(R.string.setup_menu_done)
+                } else {
+                    stringResource(
+                        R.string.setup_progress_count,
+                        progress.doneCount,
+                        progress.actionableCount
+                    )
+                },
                 style = MaterialTheme.typography.bodySmall
             )
         }

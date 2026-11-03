@@ -172,3 +172,5 @@ data object NetWorthScreen : Screen
 data object MonthlyChartScreen : Screen
 
 data object MenuScreen : Screen
+
+data object SetupScreen : Screen

@@ -27,6 +27,13 @@ enum class IvyNotificationChannel(
         description = "Reminders a few days before a confirmed subscription renews.",
         importance = NotificationManager.IMPORTANCE_HIGH,
         bypassDnd = false
+    ),
+    SETUP_REMINDER(
+        channelId = "setup_reminder",
+        channelName = "Setup reminders",
+        description = "A daily nudge while some HeyMoney setup steps are still missing.",
+        importance = NotificationManager.IMPORTANCE_DEFAULT,
+        bypassDnd = false
     );
 
     @SuppressLint("WrongConstant")

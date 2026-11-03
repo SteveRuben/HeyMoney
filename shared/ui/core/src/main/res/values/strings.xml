@@ -628,4 +628,32 @@
     <string name="menu_subs_hint">Yearly cost</string>
     <string name="menu_chart_hint">Monthly</string>
     <string name="menu_net_worth_sub">Accounts and loans</string>
+
+    <!-- HeyMoney: Setup (remaining configuration, honest states, daily reminder) -->
+    <string name="setup_title">Setup</string>
+    <string name="setup_progress_count">%1$d of %2$d steps done</string>
+    <string name="setup_progress_intro">Finish these steps to get the most out of HeyMoney: automatic capture of your charges, subscriptions and renewals.</string>
+    <string name="setup_complete">Everything you can set up today is done.</string>
+    <string name="setup_state_done">On</string>
+    <string name="setup_state_unavailable">Not yet available</string>
+    <string name="setup_action_allow">Allow</string>
+    <string name="setup_action_learn_more">Learn more</string>
+    <string name="setup_action_hide">Hide</string>
+    <string name="setup_sms_title">Bank SMS</string>
+    <string name="setup_sms_desc">Bank SMS are read on your phone to spot charges and subscriptions automatically.</string>
+    <string name="setup_notif_access_title">Bank app notifications</string>
+    <string name="setup_notif_access_desc">Notifications from your bank apps are read on your phone, for the banks that send no SMS.</string>
+    <string name="setup_bank_title">Bank connection</string>
+    <string name="setup_bank_desc">Connect your bank (Plaid or another provider) and transactions import themselves.</string>
+    <string name="setup_bank_explanation">Not available yet: this needs an account with a banking data provider such as Plaid, plus a secure HeyMoney server to hold the connection — neither exists today, so there is no connection to switch on. When it ships, your transactions will import automatically instead of relying on SMS, notifications and statements. Until then, nothing here is simulated.</string>
+    <string name="setup_email_title">Email receipts</string>
+    <string name="setup_email_desc">Find subscriptions by scanning the receipts and invoices in your mailbox.</string>
+    <string name="setup_email_explanation">Not available yet: HeyMoney would connect to your mailbox with your permission and read only messages that look like subscription receipts. That connection needs the email provider sign-in and its security review (Google, Microsoft), which are not in place yet. When it ships, subscriptions paid by card will be found even when your bank sends nothing.</string>
+    <string name="setup_card_title">Saved card</string>
+    <string name="setup_card_desc">Save a card, Link-style, to pay subscriptions from HeyMoney and track them automatically.</string>
+    <string name="setup_card_explanation">Not available yet: paying from the app needs a payment provider account and certified secure card storage (PCI), plus a server — none of that is in place today, so no card can be saved here. When it ships, you will pay a subscription in one tap and HeyMoney will follow it like the others.</string>
+    <string name="setup_reminder_title">Finish your setup</string>
+    <string name="setup_reminder_text_one">1 setup step left to get the most out of HeyMoney.</string>
+    <string name="setup_reminder_text_many">%1$d setup steps left to get the most out of HeyMoney.</string>
+    <string name="setup_menu_done">All set</string>
 </resources>

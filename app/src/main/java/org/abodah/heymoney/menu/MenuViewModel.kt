@@ -33,6 +33,9 @@ import kotlinx.coroutines.withContext
 import org.abodah.heymoney.alerts.AlertStore
 import org.abodah.heymoney.networth.CurrencyNetWorth
 import org.abodah.heymoney.networth.NetWorthCalculator
+import org.abodah.heymoney.setup.SetupProgress
+import org.abodah.heymoney.setup.SetupReminderScheduler
+import org.abodah.heymoney.setup.SetupStatusProvider
 import org.abodah.heymoney.subscriptions.DetectedSubscription
 import org.abodah.heymoney.subscriptions.SubscriptionDetector
 import org.abodah.heymoney.subscriptions.SubscriptionStatus
@@ -67,6 +70,8 @@ class MenuViewModel @Inject constructor(
     private val sharedPrefs: SharedPrefs,
     private val exportCsvUseCase: ExportCsvUseCase,
     private val backupDataUseCase: BackupDataUseCase,
+    private val setupStatusProvider: SetupStatusProvider,
+    setupReminderScheduler: SetupReminderScheduler,
 ) : ViewModel() {
 
     private val _netWorthReport = MutableStateFlow<List<CurrencyNetWorth>>(emptyList())
@@ -95,7 +100,14 @@ class MenuViewModel @Inject constructor(
     private val _walletBalance = MutableStateFlow(0.0)
     val walletBalance: StateFlow<Double> = _walletBalance
 
+    /** Remaining-configuration progress, shown on the Menu's setup card. */
+    private val _setupProgress = MutableStateFlow(setupStatusProvider.progress())
+    val setupProgress: StateFlow<SetupProgress> = _setupProgress
+
     init {
+        // The setup reminder only makes sense once the app was opened; the
+        // daily worker is unique, so scheduling again is a no-op.
+        setupReminderScheduler.schedule()
         // Same totals rule as the Subscriptions screen: what the user
         // confirmed plus what is still waiting for a decision.
         viewModelScope.launch {
@@ -114,6 +126,7 @@ class MenuViewModel @Inject constructor(
     }
 
     private fun refresh() {
+        _setupProgress.value = setupStatusProvider.progress()
         viewModelScope.launch {
             _netWorthReport.value = withContext(Dispatchers.IO) {
                 netWorthCalculator.calculate(
