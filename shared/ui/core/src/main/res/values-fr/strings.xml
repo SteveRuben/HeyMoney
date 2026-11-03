@@ -102,4 +102,45 @@
     <string name="chart_previous_period">Période précédente</string>
     <string name="chart_next_period">Période suivante</string>
     <string name="chart_empty">Aucun revenu ni dépense sur cette période.</string>
+
+    <!-- HeyMoney: Menu (point d\'entrée unique vers toutes les fonctions) -->
+    <string name="menu_title">Menu</string>
+    <string name="menu_search">Rechercher une transaction…</string>
+    <string name="menu_section_money">Mon argent</string>
+    <string name="menu_section_tracking">Suivi</string>
+    <string name="menu_section_tools">Outils</string>
+    <string name="menu_section_settings">Réglages</string>
+    <string name="menu_item_accounts">Comptes</string>
+    <string name="menu_item_categories">Catégories</string>
+    <string name="menu_item_planned">Paiements planifiés</string>
+    <string name="menu_item_loans">Prêts</string>
+    <string name="menu_item_budgets">Budgets</string>
+    <string name="menu_item_reports">Rapports</string>
+    <string name="menu_item_stats">Statistiques du mois</string>
+    <string name="menu_item_alerts">Alertes bancaires</string>
+    <string name="menu_item_scan">Scan de reçu</string>
+    <string name="menu_item_assistant">Assistant</string>
+    <string name="menu_item_qr_share">Partage par QR</string>
+    <string name="menu_item_rules">Règles automatiques</string>
+    <string name="menu_item_rules_sub">catégorisation</string>
+    <string name="menu_item_import">Importer un relevé</string>
+    <string name="menu_item_export_csv">Exporter (CSV)</string>
+    <string name="menu_item_backup">Sauvegarde</string>
+    <string name="menu_item_settings">Paramètres</string>
+    <string name="menu_item_exchange_rates">Taux de change</string>
+    <string name="menu_item_ai">Assistant IA (Claude)</string>
+    <string name="menu_item_ai_sub">optionnel</string>
+    <string name="menu_item_theme">Thème</string>
+    <string name="menu_item_advanced_sub">affichage</string>
+    <string name="menu_chart_sub">Revenus vs dépenses</string>
+    <string name="menu_subs_hint">Coût par an</string>
+    <string name="menu_chart_hint">Par mois</string>
+    <string name="menu_net_worth_sub">Comptes et prêts</string>
+    <string name="advanced_features">Options avancées</string>
+    <string name="quick_access">Accès rapide</string>
+    <string name="savings_goal">Objectif d\'épargne</string>
+    <string name="light_mode">Mode clair</string>
+    <string name="dark_mode">Mode sombre</string>
+    <string name="amoled_mode">Mode sombre AMOLED</string>
+    <string name="auto_mode">Mode automatique</string>
 </resources>

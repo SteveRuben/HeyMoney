@@ -16,6 +16,7 @@ import org.abodah.heymoney.subscriptions.SubscriptionGuideScreen
 import org.abodah.heymoney.subscriptions.SubscriptionsScreen
 import org.abodah.heymoney.networth.NetWorthScreen
 import org.abodah.heymoney.chart.MonthlyChartScreen
+import org.abodah.heymoney.menu.MenuScreen
 import com.ivy.balance.BalanceScreen
 import com.ivy.budgets.BudgetScreen
 import com.ivy.categories.CategoriesScreen
@@ -63,6 +64,7 @@ import com.ivy.navigation.SubscriptionDetailsScreen
 import com.ivy.navigation.SubscriptionsScreen
 import com.ivy.navigation.NetWorthScreen
 import com.ivy.navigation.MonthlyChartScreen
+import com.ivy.navigation.MenuScreen
 import com.ivy.navigation.TransactionsScreen
 import com.ivy.onboarding.OnboardingScreen
 import com.ivy.piechart.PieChartStatisticScreen
@@ -98,6 +100,7 @@ fun BoxWithConstraintsScope.IvyNavGraph(screen: Screen?) {
         is SubscriptionDetailsScreen -> SubscriptionGuideScreen(subscriptionKey = screen.subscriptionKey)
         is NetWorthScreen -> NetWorthScreen()
         is MonthlyChartScreen -> MonthlyChartScreen()
+        is MenuScreen -> MenuScreen()
         is OnboardingScreen -> OnboardingScreen(screen = screen)
         is ExchangeRatesScreen -> ExchangeRatesScreen()
         is EditTransactionScreen -> EditTransactionScreen(screen = screen)

@@ -500,7 +500,7 @@ private fun QuickAccess(
             val context = LocalContext.current
             MoreMenuButton(
                 icon = R.drawable.home_more_menu_reports,
-                label = stringResource(R.string.charts)
+                label = stringResource(R.string.chart_title)
             ) {
                 nav.navigateTo(MonthlyChartScreen)
             }
@@ -573,7 +573,7 @@ private fun QuickAccess(
 
             MoreMenuButton(
                 icon = R.drawable.ic_vue_messages_device_msg,
-                label = "Bank alerts",
+                label = stringResource(R.string.menu_item_alerts),
             ) {
                 nav.navigateTo(AlertsScreen)
             }
@@ -582,7 +582,7 @@ private fun QuickAccess(
 
             MoreMenuButton(
                 icon = R.drawable.ic_vue_messages_direct,
-                label = "Share",
+                label = stringResource(R.string.menu_item_qr_share),
             ) {
                 nav.navigateTo(ShareScreen)
             }

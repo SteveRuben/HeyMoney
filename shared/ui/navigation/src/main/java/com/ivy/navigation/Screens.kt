@@ -170,3 +170,5 @@ data class SubscriptionDetailsScreen(
 data object NetWorthScreen : Screen
 
 data object MonthlyChartScreen : Screen
+
+data object MenuScreen : Screen

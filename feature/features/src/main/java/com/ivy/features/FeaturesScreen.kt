@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -27,23 +26,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.ivy.design.system.colors.IvyColors.Gray
-import com.ivy.navigation.AiSettingsScreen
-import com.ivy.navigation.AlertsScreen
-import com.ivy.navigation.CategoryRulesScreen
-import com.ivy.navigation.SubscriptionsScreen
-import com.ivy.navigation.NetWorthScreen
-import com.ivy.navigation.MonthlyChartScreen
-import com.ivy.navigation.AssistantScreen
-import com.ivy.navigation.NewsScreen
-import com.ivy.navigation.ScanReceiptScreen
-import com.ivy.navigation.Screen
-import com.ivy.navigation.ShareScreen
 import com.ivy.navigation.navigation
 import com.ivy.navigation.screenScopedViewModel
+import com.ivy.ui.R
 import kotlinx.collections.immutable.ImmutableList
 
 @Composable
@@ -109,7 +99,7 @@ private fun Title(
 ) {
     Text(
         modifier = modifier,
-        text = "Features",
+        text = stringResource(R.string.advanced_features),
         maxLines = 1,
         overflow = TextOverflow.Ellipsis
     )
@@ -129,9 +119,6 @@ private fun Content(
         ),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        item {
-            HeyMoneySection()
-        }
         items(items) { item ->
             when (item) {
                 is FeatureItemViewState.FeatureHeaderViewState -> {
@@ -143,45 +130,6 @@ private fun Content(
                         feature = item,
                         onToggleClick = { onToggleFeature(item.key) }
                     )
-                }
-            }
-        }
-    }
-}
-
-private data class HeyMoneyEntry(val title: String, val description: String, val screen: Screen)
-
-private val heyMoneyEntries = listOf(
-    HeyMoneyEntry("Scan a receipt", "Film a receipt and add the expense in one tap", ScanReceiptScreen),
-    HeyMoneyEntry("Bank alerts", "Turn bank SMS, notifications and receipts into expenses to confirm", AlertsScreen),
-    HeyMoneyEntry("Subscriptions", "What you pay every month, what it costs per year, and renewal reminders", SubscriptionsScreen),
-    HeyMoneyEntry("Category rules", "File alerts and imported statements automatically, by keyword", CategoryRulesScreen),
-    HeyMoneyEntry("Net worth", "Accounts plus what you are still owed, minus what you still owe, per currency", NetWorthScreen),
-    HeyMoneyEntry("Monthly chart", "Income versus expenses, month by month", MonthlyChartScreen),
-    HeyMoneyEntry("Assistant", "Ask questions about your balance and spending", AssistantScreen),
-    HeyMoneyEntry("Investment news", "Markets, IPOs and the economy", NewsScreen),
-    HeyMoneyEntry("Share with a friend", "Send or receive expenses with a QR code, no server", ShareScreen),
-    HeyMoneyEntry("AI (Claude API)", "Optional token to read hard receipts with Claude", AiSettingsScreen),
-)
-
-@Composable
-private fun HeyMoneySection() {
-    val nav = navigation()
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        FeatureSectionDivider(text = "HeyMoney")
-        heyMoneyEntries.forEach { entry ->
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = { nav.navigateTo(entry.screen) },
-            ) {
-                Column(Modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
-                    Text(
-                        text = entry.title,
-                        style = MaterialTheme.typography.bodyLarge,
-                        fontWeight = FontWeight.W700
-                    )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(text = entry.description, style = MaterialTheme.typography.bodySmall)
                 }
             }
         }

@@ -489,7 +489,7 @@
     <string name="select_tags">Select Tags</string>
     <string name="bill_paid">Your bill for %1$s %2$s has been paid</string>
     <string name="language">Language</string>
-    <string name="advanced_features">Advanced features</string>
+    <string name="advanced_features">Advanced options</string>
     <string name="scan_receipt_short">Scan a receipt</string>
 
     <!-- HeyMoney: Category rules (automatic categorisation for alerts and CSV imports) -->
@@ -594,4 +594,38 @@
     <string name="chart_previous_period">Previous period</string>
     <string name="chart_next_period">Next period</string>
     <string name="chart_empty">No income or expense in this period.</string>
+
+    <!-- HeyMoney: Menu (single entry point to every feature) -->
+    <string name="menu_title">Menu</string>
+    <string name="menu_search">Search a transaction…</string>
+    <string name="menu_section_money">My money</string>
+    <string name="menu_section_tracking">Tracking</string>
+    <string name="menu_section_tools">Tools</string>
+    <string name="menu_section_settings">Settings</string>
+    <string name="menu_item_accounts">Accounts</string>
+    <string name="menu_item_categories">Categories</string>
+    <string name="menu_item_planned">Planned payments</string>
+    <string name="menu_item_loans">Loans</string>
+    <string name="menu_item_budgets">Budgets</string>
+    <string name="menu_item_reports">Reports</string>
+    <string name="menu_item_stats">Monthly statistics</string>
+    <string name="menu_item_alerts">Bank alerts</string>
+    <string name="menu_item_scan">Scan a receipt</string>
+    <string name="menu_item_assistant">Assistant</string>
+    <string name="menu_item_qr_share">Share by QR code</string>
+    <string name="menu_item_rules">Automatic rules</string>
+    <string name="menu_item_rules_sub">Categorisation</string>
+    <string name="menu_item_import">Import a statement</string>
+    <string name="menu_item_export_csv">Export (CSV)</string>
+    <string name="menu_item_backup">Backup</string>
+    <string name="menu_item_settings">Settings</string>
+    <string name="menu_item_exchange_rates">Exchange rates</string>
+    <string name="menu_item_ai">AI assistant (Claude)</string>
+    <string name="menu_item_ai_sub">Optional</string>
+    <string name="menu_item_theme">Theme</string>
+    <string name="menu_item_advanced_sub">Display</string>
+    <string name="menu_chart_sub">Income vs expenses</string>
+    <string name="menu_subs_hint">Yearly cost</string>
+    <string name="menu_chart_hint">Monthly</string>
+    <string name="menu_net_worth_sub">Accounts and loans</string>
 </resources>
