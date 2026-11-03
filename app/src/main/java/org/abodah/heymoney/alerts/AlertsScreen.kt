@@ -44,7 +44,6 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import java.io.File
-import com.ivy.navigation.AiSettingsScreen
 import com.ivy.navigation.ScanReceiptScreen
 import com.ivy.navigation.navigation
 import com.ivy.navigation.screenScopedViewModel
@@ -58,7 +57,6 @@ fun AlertsScreen(viewModel: AlertsViewModel = screenScopedViewModel()) {
     val context = LocalContext.current
     val pending by viewModel.pending.collectAsState()
     val scanning by viewModel.scanning.collectAsState()
-    val hasToken by viewModel.hasToken.collectAsState()
     var pendingPhoto by remember { mutableStateOf<Uri?>(null) }
     val takePicture = rememberLauncherForActivityResult(ActivityResultContracts.TakePicture()) { ok ->
         val uri = pendingPhoto
@@ -166,11 +164,9 @@ fun AlertsScreen(viewModel: AlertsViewModel = screenScopedViewModel()) {
                         }
                         if (scanning) Text("Reading the receipt…", style = MaterialTheme.typography.labelLarge)
                         Text(
-                            if (hasToken) "AI reading is ON: receipt photos are sent to Anthropic (Claude API)."
-                            else "Reading is fully on your phone. Hard receipts can use the Claude API.",
+                            "Reading is fully on your phone — nothing is sent anywhere.",
                             style = MaterialTheme.typography.bodySmall
                         )
-                        TextButton(onClick = { nav.navigateTo(AiSettingsScreen) }) { Text("AI settings") }
                     }
                 }
             }

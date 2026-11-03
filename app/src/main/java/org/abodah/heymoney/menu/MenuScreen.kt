@@ -42,7 +42,6 @@ import com.ivy.design.system.colors.IvyColors.Gray
 import com.ivy.legacy.data.model.MainTab
 import com.ivy.legacy.ivyWalletCtx
 import com.ivy.legacy.rootScreen
-import com.ivy.navigation.AiSettingsScreen
 import com.ivy.navigation.AlertsScreen
 import com.ivy.navigation.BudgetScreen
 import com.ivy.navigation.CategoriesScreen
@@ -158,22 +157,30 @@ fun BoxWithConstraintsScope.MenuScreen(
                 }
             }
 
-            item {
-                MenuItemCard(
-                    title = stringResource(R.string.savings_goal),
-                    subtitle = formatMoney(bufferAmount, baseCurrency)
-                ) {
-                    bufferModalData = BufferModalData(
-                        balance = walletBalance,
-                        currency = baseCurrency,
-                        buffer = bufferAmount
-                    )
+            if (!setupProgress.isComplete) {
+                item {
+                    SetupCard(progress = setupProgress) {
+                        nav.navigateTo(SetupScreen)
+                    }
                 }
             }
 
+            // ----------------------- Abonnements & alertes ------------------------
+            item { SectionHeader(stringResource(R.string.menu_section_subs_alerts)) }
             item {
-                SetupCard(progress = setupProgress) {
-                    nav.navigateTo(SetupScreen)
+                MenuItemCard(
+                    title = stringResource(R.string.menu_item_alerts),
+                    badgeCount = pendingAlerts
+                ) {
+                    nav.navigateTo(AlertsScreen)
+                }
+            }
+            item {
+                MenuItemCard(
+                    title = stringResource(R.string.menu_item_messages),
+                    subtitle = stringResource(R.string.menu_item_messages_sub)
+                ) {
+                    nav.navigateTo(MessageScanScreen)
                 }
             }
 
@@ -205,6 +212,26 @@ fun BoxWithConstraintsScope.MenuScreen(
                     nav.navigateTo(BudgetScreen)
                 }
             }
+            item {
+                MenuItemCard(
+                    title = stringResource(R.string.savings_goal),
+                    subtitle = formatMoney(bufferAmount, baseCurrency)
+                ) {
+                    bufferModalData = BufferModalData(
+                        balance = walletBalance,
+                        currency = baseCurrency,
+                        buffer = bufferAmount
+                    )
+                }
+            }
+            item {
+                MenuItemCard(
+                    title = stringResource(R.string.menu_item_rules),
+                    subtitle = stringResource(R.string.menu_item_rules_sub)
+                ) {
+                    nav.navigateTo(CategoryRulesScreen)
+                }
+            }
 
             // -------------------------------- Suivi --------------------------------
             item { SectionHeader(stringResource(R.string.menu_section_tracking)) }
@@ -220,43 +247,12 @@ fun BoxWithConstraintsScope.MenuScreen(
                     )
                 }
             }
-            item {
-                MenuItemCard(
-                    title = stringResource(R.string.menu_item_alerts),
-                    badgeCount = pendingAlerts
-                ) {
-                    nav.navigateTo(AlertsScreen)
-                }
-            }
 
             // -------------------------------- Outils -------------------------------
             item { SectionHeader(stringResource(R.string.menu_section_tools)) }
             item {
                 MenuItemCard(title = stringResource(R.string.menu_item_scan)) {
                     nav.navigateTo(ScanReceiptScreen)
-                }
-            }
-            item {
-                MenuItemCard(title = stringResource(R.string.menu_item_assistant)) {
-                    nav.navigateTo(AssistantScreen)
-                }
-            }
-            item {
-                MenuItemCard(title = stringResource(R.string.menu_item_qr_share)) {
-                    nav.navigateTo(ShareScreen)
-                }
-            }
-            item {
-                MenuItemCard(
-                    title = stringResource(R.string.menu_item_rules),
-                    subtitle = stringResource(R.string.menu_item_rules_sub)
-                ) {
-                    nav.navigateTo(CategoryRulesScreen)
-                }
-            }
-            item {
-                MenuItemCard(title = stringResource(R.string.menu_item_import)) {
-                    nav.navigateTo(ImportScreen(launchedFromOnboarding = false))
                 }
             }
             item {
@@ -268,6 +264,11 @@ fun BoxWithConstraintsScope.MenuScreen(
                 }
             }
             item {
+                MenuItemCard(title = stringResource(R.string.menu_item_assistant)) {
+                    nav.navigateTo(AssistantScreen)
+                }
+            }
+            item {
                 MenuItemCard(
                     title = stringResource(R.string.menu_item_vault),
                     subtitle = stringResource(R.string.menu_item_vault_sub)
@@ -276,11 +277,16 @@ fun BoxWithConstraintsScope.MenuScreen(
                 }
             }
             item {
-                MenuItemCard(
-                    title = stringResource(R.string.menu_item_messages),
-                    subtitle = stringResource(R.string.menu_item_messages_sub)
-                ) {
-                    nav.navigateTo(MessageScanScreen)
+                MenuItemCard(title = stringResource(R.string.menu_item_qr_share)) {
+                    nav.navigateTo(ShareScreen)
+                }
+            }
+
+            // ------------------------------- Données -------------------------------
+            item { SectionHeader(stringResource(R.string.menu_section_data)) }
+            item {
+                MenuItemCard(title = stringResource(R.string.menu_item_import)) {
+                    nav.navigateTo(ImportScreen(launchedFromOnboarding = false))
                 }
             }
             item {
@@ -304,14 +310,6 @@ fun BoxWithConstraintsScope.MenuScreen(
             item {
                 MenuItemCard(title = stringResource(R.string.menu_item_exchange_rates)) {
                     nav.navigateTo(ExchangeRatesScreen)
-                }
-            }
-            item {
-                MenuItemCard(
-                    title = stringResource(R.string.menu_item_ai),
-                    subtitle = stringResource(R.string.menu_item_ai_sub)
-                ) {
-                    nav.navigateTo(AiSettingsScreen)
                 }
             }
             item {

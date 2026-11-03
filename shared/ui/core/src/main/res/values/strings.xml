@@ -602,6 +602,8 @@
     <string name="menu_section_tracking">Tracking</string>
     <string name="menu_section_tools">Tools</string>
     <string name="menu_section_settings">Settings</string>
+    <string name="menu_section_subs_alerts">Subscriptions &amp; alerts</string>
+    <string name="menu_section_data">Data</string>
     <string name="menu_item_accounts">Accounts</string>
     <string name="menu_item_categories">Categories</string>
     <string name="menu_item_planned">Planned payments</string>
@@ -620,8 +622,6 @@
     <string name="menu_item_backup">Backup</string>
     <string name="menu_item_settings">Settings</string>
     <string name="menu_item_exchange_rates">Exchange rates</string>
-    <string name="menu_item_ai">AI assistant (Claude)</string>
-    <string name="menu_item_ai_sub">Optional</string>
     <string name="menu_item_theme">Theme</string>
     <string name="menu_item_advanced_sub">Display</string>
     <string name="menu_chart_sub">Income vs expenses</string>

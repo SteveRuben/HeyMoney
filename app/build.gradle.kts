@@ -101,7 +101,7 @@ android {
     }
 
     packaging {
-        // the Anthropic SDK pulls several jars that ship the same metadata files
+        // several bundled jars ship the same metadata files
         resources {
             excludes += setOf(
                 "META-INF/DEPENDENCIES",
@@ -202,7 +202,6 @@ dependencies {
     implementation("androidx.camera:camera-lifecycle:1.3.4")
     implementation("androidx.camera:camera-view:1.3.4")
     implementation("com.google.guava:guava:33.3.1-android")
-    implementation("com.anthropic:anthropic-java:2.34.0")
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation(libs.keval)
     implementation(libs.bundles.opencsv)

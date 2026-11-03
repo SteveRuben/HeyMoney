@@ -17,7 +17,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.abodah.heymoney.receipts.AiTokenStore
 import org.abodah.heymoney.receipts.ReceiptScanner
 import org.abodah.heymoney.receipts.ScanResult
 import java.time.Instant
@@ -36,14 +35,10 @@ class AlertsViewModel @Inject constructor(
     private val store: AlertStore,
     private val saver: AlertSaver,
     private val scanner: ReceiptScanner,
-    private val tokens: AiTokenStore,
 ) : ViewModel() {
 
     private val _scanning = MutableStateFlow(false)
     val scanning: StateFlow<Boolean> = _scanning
-
-    private val _hasToken = MutableStateFlow(tokens.get() != null)
-    val hasToken: StateFlow<Boolean> = _hasToken
 
     /** Reads a receipt photo and adds it to the pending list as a draft. */
     fun scanReceipt(uri: Uri) {

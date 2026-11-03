@@ -110,6 +110,8 @@
     <string name="menu_section_tracking">Suivi</string>
     <string name="menu_section_tools">Outils</string>
     <string name="menu_section_settings">Réglages</string>
+    <string name="menu_section_subs_alerts">Abonnements &amp; alertes</string>
+    <string name="menu_section_data">Données</string>
     <string name="menu_item_accounts">Comptes</string>
     <string name="menu_item_categories">Catégories</string>
     <string name="menu_item_planned">Paiements planifiés</string>
@@ -128,8 +130,6 @@
     <string name="menu_item_backup">Sauvegarde</string>
     <string name="menu_item_settings">Paramètres</string>
     <string name="menu_item_exchange_rates">Taux de change</string>
-    <string name="menu_item_ai">Assistant IA (Claude)</string>
-    <string name="menu_item_ai_sub">optionnel</string>
     <string name="menu_item_theme">Thème</string>
     <string name="menu_item_advanced_sub">affichage</string>
     <string name="menu_chart_sub">Revenus vs dépenses</string>

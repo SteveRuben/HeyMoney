@@ -155,8 +155,6 @@ data object NewsScreen : Screen
 
 data object ShareScreen : Screen
 
-data object AiSettingsScreen : Screen
-
 data object ScanReceiptScreen : Screen
 
 data object CategoryRulesScreen : Screen

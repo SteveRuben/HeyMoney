@@ -5,7 +5,6 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.BoxWithConstraintsScope
 import androidx.compose.runtime.Composable
 import com.ivy.attributions.AttributionsScreenImpl
-import org.abodah.heymoney.ai.AiSettingsScreen
 import org.abodah.heymoney.alerts.AlertsScreen
 import org.abodah.heymoney.receipts.LiveScanScreen
 import org.abodah.heymoney.assistant.AssistantScreen
@@ -34,7 +33,6 @@ import com.ivy.importdata.csvimport.ImportCSVScreen
 import com.ivy.loans.loan.LoansScreen
 import com.ivy.loans.loandetails.LoanDetailsScreen
 import com.ivy.main.MainScreen
-import com.ivy.navigation.AiSettingsScreen
 import com.ivy.navigation.AlertsScreen
 import com.ivy.navigation.ScanReceiptScreen
 import com.ivy.navigation.AssistantScreen
@@ -101,7 +99,6 @@ fun BoxWithConstraintsScope.IvyNavGraph(screen: Screen?) {
         is MainScreen -> MainScreen(screen = screen)
         is AlertsScreen -> AlertsScreen()
         is ScanReceiptScreen -> LiveScanScreen()
-        is AiSettingsScreen -> AiSettingsScreen()
         is AssistantScreen -> AssistantScreen()
         is NewsScreen -> NewsScreen()
         is ShareScreen -> ShareScreen()
