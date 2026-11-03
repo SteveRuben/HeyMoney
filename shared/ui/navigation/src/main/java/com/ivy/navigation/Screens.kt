@@ -180,3 +180,5 @@ data object StatementAnalysisScreen : Screen
 data object VaultScreen : Screen
 
 data object MessageScanScreen : Screen
+
+data object MonthlyBudgetScreen : Screen

@@ -730,6 +730,33 @@
     <string name="vault_copy_password">Copy the password</string>
     <string name="vault_copied">Password copied</string>
 
+    <!-- HeyMoney: Zero-based monthly budget (assign income to categories, YNAB-style) -->
+    <string name="zb_open_monthly">Monthly budget — zero-based</string>
+    <string name="zb_title">Monthly budget</string>
+    <string name="zb_intro">Give every dollar a job: assign this month\'s income to your categories. What a category doesn\'t spend rolls into next month — and so does overspending. Amounts are in your base currency and count the accounts in that currency.</string>
+    <string name="zb_to_assign">To assign</string>
+    <string name="zb_income">Income this month</string>
+    <string name="zb_total_assigned">Assigned</string>
+    <string name="zb_age_of_money">Age of money</string>
+    <string name="zb_age_days">%1$d days</string>
+    <string name="zb_carried">Carried over</string>
+    <string name="zb_spent">Spent</string>
+    <string name="zb_available">Available</string>
+    <string name="zb_assign">Assign</string>
+    <string name="zb_assign_title">Assign to %1$s</string>
+    <string name="zb_amount">Amount</string>
+    <string name="zb_goal_set">Set a goal</string>
+    <string name="zb_goal_title">Goal for %1$s</string>
+    <string name="zb_goal_target">Target amount</string>
+    <string name="zb_goal_by">Goal %1$s by %2$s</string>
+    <string name="zb_goal_needs">Needs %1$s a month to get there</string>
+    <string name="zb_goal_reached">Goal reached</string>
+    <string name="zb_goal_remove">Remove goal</string>
+    <string name="zb_cancel">Cancel</string>
+    <string name="zb_uncategorized">%1$s spent without a category this month</string>
+    <string name="zb_no_categories">No categories yet — create categories first, then come back to assign your income.</string>
+    <string name="zb_unknown_category">Deleted category</string>
+
     <!-- HeyMoney: On-device analysis of SMS to find carriers and subscriptions -->
     <string name="menu_item_messages">Analyse my messages</string>
     <string name="menu_item_messages_sub">carriers and subscriptions in your SMS</string>

@@ -21,6 +21,7 @@ import org.abodah.heymoney.setup.SetupScreen
 import org.abodah.heymoney.messages.MessageScanScreen
 import org.abodah.heymoney.statement.StatementAnalysisScreen
 import org.abodah.heymoney.vault.VaultScreen
+import org.abodah.heymoney.budget.MonthlyBudgetScreen
 import com.ivy.balance.BalanceScreen
 import com.ivy.budgets.BudgetScreen
 import com.ivy.categories.CategoriesScreen
@@ -71,6 +72,7 @@ import com.ivy.navigation.MonthlyChartScreen
 import com.ivy.navigation.MenuScreen
 import com.ivy.navigation.SetupScreen
 import com.ivy.navigation.MessageScanScreen
+import com.ivy.navigation.MonthlyBudgetScreen
 import com.ivy.navigation.StatementAnalysisScreen
 import com.ivy.navigation.VaultScreen
 import com.ivy.navigation.TransactionsScreen
@@ -113,6 +115,7 @@ fun BoxWithConstraintsScope.IvyNavGraph(screen: Screen?) {
         is StatementAnalysisScreen -> StatementAnalysisScreen()
         is VaultScreen -> VaultScreen()
         is MessageScanScreen -> MessageScanScreen()
+        is MonthlyBudgetScreen -> MonthlyBudgetScreen()
         is OnboardingScreen -> OnboardingScreen(screen = screen)
         is ExchangeRatesScreen -> ExchangeRatesScreen()
         is EditTransactionScreen -> EditTransactionScreen(screen = screen)

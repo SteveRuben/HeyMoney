@@ -245,6 +245,33 @@
     <string name="vault_copy_password">Copier le mot de passe</string>
     <string name="vault_copied">Mot de passe copié</string>
 
+    <!-- HeyMoney : Budget mensuel base zéro (assigner les revenus aux catégories, méthode YNAB) -->
+    <string name="zb_open_monthly">Budget du mois — base zéro</string>
+    <string name="zb_title">Budget du mois</string>
+    <string name="zb_intro">Donnez un travail à chaque dollar : assignez les revenus du mois à vos catégories. Ce qu\'une catégorie ne dépense pas passe au mois suivant — et les dépassements aussi. Les montants sont dans votre devise de base et comptent les comptes dans cette devise.</string>
+    <string name="zb_to_assign">À assigner</string>
+    <string name="zb_income">Revenus du mois</string>
+    <string name="zb_total_assigned">Assigné</string>
+    <string name="zb_age_of_money">Âge de l\'argent</string>
+    <string name="zb_age_days">%1$d jours</string>
+    <string name="zb_carried">Reporté</string>
+    <string name="zb_spent">Dépensé</string>
+    <string name="zb_available">Disponible</string>
+    <string name="zb_assign">Assigner</string>
+    <string name="zb_assign_title">Assigner à %1$s</string>
+    <string name="zb_amount">Montant</string>
+    <string name="zb_goal_set">Définir un objectif</string>
+    <string name="zb_goal_title">Objectif pour %1$s</string>
+    <string name="zb_goal_target">Montant cible</string>
+    <string name="zb_goal_by">Objectif %1$s d\'ici %2$s</string>
+    <string name="zb_goal_needs">Demande %1$s par mois pour y arriver</string>
+    <string name="zb_goal_reached">Objectif atteint</string>
+    <string name="zb_goal_remove">Retirer l\'objectif</string>
+    <string name="zb_cancel">Annuler</string>
+    <string name="zb_uncategorized">%1$s dépensés sans catégorie ce mois-ci</string>
+    <string name="zb_no_categories">Aucune catégorie pour le moment — créez d\'abord des catégories, puis revenez assigner vos revenus.</string>
+    <string name="zb_unknown_category">Catégorie supprimée</string>
+
     <!-- HeyMoney : Analyse locale des SMS pour trouver opérateurs et abonnements -->
     <string name="menu_item_messages">Analyser mes messages</string>
     <string name="menu_item_messages_sub">opérateurs et abonnements dans vos SMS</string>
