@@ -1,5 +1,6 @@
 package org.abodah.heymoney.menu
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraintsScope
 import androidx.compose.foundation.layout.Column
@@ -68,6 +69,7 @@ import com.ivy.navigation.SubscriptionsScreen
 import com.ivy.navigation.navigation
 import com.ivy.navigation.screenScopedViewModel
 import com.ivy.ui.R
+import com.ivy.wallet.ui.theme.components.IvyIcon
 import com.ivy.wallet.ui.theme.modal.BufferModal
 import com.ivy.wallet.ui.theme.modal.BufferModalData
 import org.abodah.heymoney.networth.CurrencyNetWorth
@@ -169,6 +171,7 @@ fun BoxWithConstraintsScope.MenuScreen(
             item { SectionHeader(stringResource(R.string.menu_section_subs_alerts)) }
             item {
                 MenuItemCard(
+                    icon = R.drawable.ic_vue_messages_device_msg,
                     title = stringResource(R.string.menu_item_alerts),
                     badgeCount = pendingAlerts
                 ) {
@@ -177,6 +180,7 @@ fun BoxWithConstraintsScope.MenuScreen(
             }
             item {
                 MenuItemCard(
+                    icon = R.drawable.ic_vue_messages_msg_text,
                     title = stringResource(R.string.menu_item_messages),
                     subtitle = stringResource(R.string.menu_item_messages_sub)
                 ) {
@@ -187,33 +191,49 @@ fun BoxWithConstraintsScope.MenuScreen(
             // ------------------------------ Mon argent ------------------------------
             item { SectionHeader(stringResource(R.string.menu_section_money)) }
             item {
-                MenuItemCard(title = stringResource(R.string.menu_item_accounts)) {
+                MenuItemCard(
+                    icon = R.drawable.ic_accounts,
+                    title = stringResource(R.string.menu_item_accounts)
+                ) {
                     ivyContext.selectMainTab(MainTab.ACCOUNTS)
                     nav.back()
                 }
             }
             item {
-                MenuItemCard(title = stringResource(R.string.menu_item_categories)) {
+                MenuItemCard(
+                    icon = R.drawable.home_more_menu_categories,
+                    title = stringResource(R.string.menu_item_categories)
+                ) {
                     nav.navigateTo(CategoriesScreen)
                 }
             }
             item {
-                MenuItemCard(title = stringResource(R.string.menu_item_planned)) {
+                MenuItemCard(
+                    icon = R.drawable.home_more_menu_planned_payments,
+                    title = stringResource(R.string.menu_item_planned)
+                ) {
                     nav.navigateTo(PlannedPaymentsScreen)
                 }
             }
             item {
-                MenuItemCard(title = stringResource(R.string.menu_item_loans)) {
+                MenuItemCard(
+                    icon = R.drawable.home_more_menu_loans,
+                    title = stringResource(R.string.menu_item_loans)
+                ) {
                     nav.navigateTo(LoansScreen)
                 }
             }
             item {
-                MenuItemCard(title = stringResource(R.string.menu_item_budgets)) {
+                MenuItemCard(
+                    icon = R.drawable.home_more_menu_budgets,
+                    title = stringResource(R.string.menu_item_budgets)
+                ) {
                     nav.navigateTo(BudgetScreen)
                 }
             }
             item {
                 MenuItemCard(
+                    icon = R.drawable.ic_vue_money_coins,
                     title = stringResource(R.string.savings_goal),
                     subtitle = formatMoney(bufferAmount, baseCurrency)
                 ) {
@@ -226,6 +246,7 @@ fun BoxWithConstraintsScope.MenuScreen(
             }
             item {
                 MenuItemCard(
+                    icon = R.drawable.ic_vue_media_setting,
                     title = stringResource(R.string.menu_item_rules),
                     subtitle = stringResource(R.string.menu_item_rules_sub)
                 ) {
@@ -236,12 +257,18 @@ fun BoxWithConstraintsScope.MenuScreen(
             // -------------------------------- Suivi --------------------------------
             item { SectionHeader(stringResource(R.string.menu_section_tracking)) }
             item {
-                MenuItemCard(title = stringResource(R.string.menu_item_reports)) {
+                MenuItemCard(
+                    icon = R.drawable.home_more_menu_reports,
+                    title = stringResource(R.string.menu_item_reports)
+                ) {
                     nav.navigateTo(ReportScreen)
                 }
             }
             item {
-                MenuItemCard(title = stringResource(R.string.menu_item_stats)) {
+                MenuItemCard(
+                    icon = R.drawable.ic_vue_chart_chart,
+                    title = stringResource(R.string.menu_item_stats)
+                ) {
                     nav.navigateTo(
                         PieChartStatisticScreen(type = TransactionType.EXPENSE)
                     )
@@ -251,12 +278,16 @@ fun BoxWithConstraintsScope.MenuScreen(
             // -------------------------------- Outils -------------------------------
             item { SectionHeader(stringResource(R.string.menu_section_tools)) }
             item {
-                MenuItemCard(title = stringResource(R.string.menu_item_scan)) {
+                MenuItemCard(
+                    icon = R.drawable.ic_vue_money_receipt_items,
+                    title = stringResource(R.string.menu_item_scan)
+                ) {
                     nav.navigateTo(ScanReceiptScreen)
                 }
             }
             item {
                 MenuItemCard(
+                    icon = R.drawable.ic_custom_document_m,
                     title = stringResource(R.string.menu_item_statement_analysis),
                     subtitle = stringResource(R.string.menu_item_statement_analysis_sub)
                 ) {
@@ -264,12 +295,16 @@ fun BoxWithConstraintsScope.MenuScreen(
                 }
             }
             item {
-                MenuItemCard(title = stringResource(R.string.menu_item_assistant)) {
+                MenuItemCard(
+                    icon = R.drawable.ic_vue_design_magicpen,
+                    title = stringResource(R.string.menu_item_assistant)
+                ) {
                     nav.navigateTo(AssistantScreen)
                 }
             }
             item {
                 MenuItemCard(
+                    icon = R.drawable.ic_vue_security_lock,
                     title = stringResource(R.string.menu_item_vault),
                     subtitle = stringResource(R.string.menu_item_vault_sub)
                 ) {
@@ -277,7 +312,10 @@ fun BoxWithConstraintsScope.MenuScreen(
                 }
             }
             item {
-                MenuItemCard(title = stringResource(R.string.menu_item_qr_share)) {
+                MenuItemCard(
+                    icon = R.drawable.ic_vue_messages_direct,
+                    title = stringResource(R.string.menu_item_qr_share)
+                ) {
                     nav.navigateTo(ShareScreen)
                 }
             }
@@ -285,17 +323,26 @@ fun BoxWithConstraintsScope.MenuScreen(
             // ------------------------------- Données -------------------------------
             item { SectionHeader(stringResource(R.string.menu_section_data)) }
             item {
-                MenuItemCard(title = stringResource(R.string.menu_item_import)) {
+                MenuItemCard(
+                    icon = R.drawable.ic_export_csv,
+                    title = stringResource(R.string.menu_item_import)
+                ) {
                     nav.navigateTo(ImportScreen(launchedFromOnboarding = false))
                 }
             }
             item {
-                MenuItemCard(title = stringResource(R.string.menu_item_export_csv)) {
+                MenuItemCard(
+                    icon = R.drawable.ic_vue_pc_printer,
+                    title = stringResource(R.string.menu_item_export_csv)
+                ) {
                     viewModel.exportCsv(rootScreen)
                 }
             }
             item {
-                MenuItemCard(title = stringResource(R.string.menu_item_backup)) {
+                MenuItemCard(
+                    icon = R.drawable.ic_vue_security_shield,
+                    title = stringResource(R.string.menu_item_backup)
+                ) {
                     viewModel.backup(rootScreen)
                 }
             }
@@ -303,17 +350,29 @@ fun BoxWithConstraintsScope.MenuScreen(
             // ------------------------------- Réglages ------------------------------
             item { SectionHeader(stringResource(R.string.menu_section_settings)) }
             item {
-                MenuItemCard(title = stringResource(R.string.menu_item_settings)) {
+                MenuItemCard(
+                    icon = R.drawable.home_more_menu_settings,
+                    title = stringResource(R.string.menu_item_settings)
+                ) {
                     nav.navigateTo(SettingsScreen)
                 }
             }
             item {
-                MenuItemCard(title = stringResource(R.string.menu_item_exchange_rates)) {
+                MenuItemCard(
+                    icon = R.drawable.ic_currency,
+                    title = stringResource(R.string.menu_item_exchange_rates)
+                ) {
                     nav.navigateTo(ExchangeRatesScreen)
                 }
             }
             item {
                 MenuItemCard(
+                    icon = when (theme) {
+                        Theme.LIGHT -> R.drawable.home_more_menu_light_mode
+                        Theme.DARK -> R.drawable.home_more_menu_dark_mode
+                        Theme.AMOLED_DARK -> R.drawable.home_more_menu_amoled_dark_mode
+                        Theme.AUTO -> R.drawable.home_more_menu_auto_mode
+                    },
                     title = stringResource(R.string.menu_item_theme),
                     subtitle = stringResource(
                         when (theme) {
@@ -329,6 +388,7 @@ fun BoxWithConstraintsScope.MenuScreen(
             }
             item {
                 MenuItemCard(
+                    icon = R.drawable.ic_custom_programming_m,
                     title = stringResource(R.string.advanced_features),
                     subtitle = stringResource(R.string.menu_item_advanced_sub)
                 ) {
@@ -524,6 +584,7 @@ private fun SectionHeader(
 
 @Composable
 private fun MenuItemCard(
+    @DrawableRes icon: Int,
     title: String,
     subtitle: String? = null,
     badgeCount: Int = 0,
@@ -537,6 +598,8 @@ private fun MenuItemCard(
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
+            IvyIcon(icon = icon)
+            Spacer(modifier = Modifier.width(12.dp))
             Column(Modifier.weight(1f)) {
                 Text(
                     text = title,
