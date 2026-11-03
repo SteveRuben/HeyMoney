@@ -6,7 +6,7 @@ import android.provider.Telephony
 import android.telephony.TelephonyManager
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.ivy.base.model.IntervalType
+import com.ivy.data.model.IntervalType
 import com.ivy.base.model.TransactionType
 import com.ivy.data.db.dao.read.AccountDao
 import com.ivy.data.db.dao.read.PlannedPaymentRuleDao
