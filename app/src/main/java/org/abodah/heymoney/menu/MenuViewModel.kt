@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ivy.base.legacy.SharedPrefs
 import com.ivy.base.legacy.Theme
+import com.ivy.base.legacy.refreshWidget
 import com.ivy.data.backup.BackupDataUseCase
 import com.ivy.data.db.dao.read.AccountDao
 import com.ivy.data.db.dao.read.LoanDao
@@ -19,6 +20,7 @@ import com.ivy.legacy.utils.getISOFormattedDateTime
 import com.ivy.legacy.utils.timeNowUTC
 import com.ivy.legacy.utils.uiThread
 import com.ivy.wallet.domain.action.settings.SettingsAct
+import com.ivy.widget.balance.WalletBalanceWidgetReceiver
 import com.ivy.wallet.domain.action.wallet.CalcWalletBalanceAct
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -91,6 +93,10 @@ class MenuViewModel @Inject constructor(
     private val _theme = MutableStateFlow(Theme.AUTO)
     val theme: StateFlow<Theme> = _theme
 
+    /** App lock on/off — the same SharedPrefs flag the Settings screen used. */
+    private val _appLockEnabled = MutableStateFlow(false)
+    val appLockEnabled: StateFlow<Boolean> = _appLockEnabled
+
     private val _bufferAmount = MutableStateFlow(0.0)
     val bufferAmount: StateFlow<Double> = _bufferAmount
 
@@ -127,6 +133,7 @@ class MenuViewModel @Inject constructor(
 
     private fun refresh() {
         _setupProgress.value = setupStatusProvider.progress()
+        _appLockEnabled.value = sharedPrefs.getBoolean(SharedPrefs.APP_LOCK_ENABLED, false)
         viewModelScope.launch {
             _netWorthReport.value = withContext(Dispatchers.IO) {
                 netWorthCalculator.calculate(
@@ -155,6 +162,20 @@ class MenuViewModel @Inject constructor(
             _walletBalance.value = calcWalletBalanceAct(
                 CalcWalletBalanceAct.Input(baseCurrency = settings.baseCurrency)
             ).toDouble()
+        }
+    }
+
+    /**
+     * Toggles the app lock, exactly like the Settings screen did: the same
+     * [SharedPrefs.APP_LOCK_ENABLED] write and the same widget refresh, so
+     * RootViewModel's start-up gate sees the identical state.
+     */
+    fun setAppLock(enabled: Boolean) {
+        _appLockEnabled.value = enabled
+
+        viewModelScope.launch {
+            sharedPrefs.putBoolean(SharedPrefs.APP_LOCK_ENABLED, enabled)
+            refreshWidget(WalletBalanceWidgetReceiver::class.java)
         }
     }
 

@@ -79,7 +79,6 @@ fun BoxWithConstraintsScope.SettingsScreen() {
 
     UI(
         currencyCode = uiState.currencyCode,
-        lockApp = uiState.lockApp,
         showNotifications = uiState.showNotifications,
         hideCurrentBalance = uiState.hideCurrentBalance,
         hideIncome = uiState.hideIncome,
@@ -92,9 +91,6 @@ fun BoxWithConstraintsScope.SettingsScreen() {
         },
         onSetName = {
             viewModel.onEvent(SettingsEvent.SetName(it))
-        },
-        onSetLockApp = {
-            viewModel.onEvent(SettingsEvent.SetLockApp(it))
         },
         onSetShowNotifications = {
             viewModel.onEvent(SettingsEvent.SetShowNotifications(it))
@@ -128,7 +124,6 @@ fun BoxWithConstraintsScope.SettingsScreen() {
 @Suppress("LongMethod")
 private fun BoxWithConstraintsScope.UI(
     currencyCode: String,
-    lockApp: Boolean,
     nameLocalAccount: String?,
     languageOptionVisible: Boolean,
     onSetCurrency: (String) -> Unit,
@@ -138,7 +133,6 @@ private fun BoxWithConstraintsScope.UI(
     hideIncome: Boolean = false,
     treatTransfersAsIncomeExpense: Boolean = false,
     onSetName: (String) -> Unit = {},
-    onSetLockApp: (Boolean) -> Unit = {},
     onSetShowNotifications: (Boolean) -> Unit = {},
     onSetTreatTransfersAsIncExp: (Boolean) -> Unit = {},
     onSetHideCurrentBalance: (Boolean) -> Unit = {},
@@ -232,15 +226,6 @@ private fun BoxWithConstraintsScope.UI(
 
                 Spacer(Modifier.height(12.dp))
             }
-
-            AppSwitch(
-                lockApp = lockApp,
-                onSetLockApp = onSetLockApp,
-                text = stringResource(R.string.lock_app),
-                icon = R.drawable.ic_custom_fingerprint_m
-            )
-
-            Spacer(Modifier.height(12.dp))
 
             AppSwitch(
                 lockApp = showNotifications,
@@ -963,7 +948,6 @@ private fun Preview(theme: Theme = Theme.LIGHT) {
     IvyWalletPreview(theme) {
         UI(
             nameLocalAccount = null,
-            lockApp = false,
             currencyCode = "BGN",
             onSetCurrency = {},
             languageOptionVisible = true

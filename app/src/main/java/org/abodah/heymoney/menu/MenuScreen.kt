@@ -98,6 +98,7 @@ fun BoxWithConstraintsScope.MenuScreen(
     val subsYearlyTotals by viewModel.subsYearlyTotals.collectAsState()
     val pendingAlerts by viewModel.pendingAlertsCount.collectAsState()
     val theme by viewModel.theme.collectAsState()
+    val appLockEnabled by viewModel.appLockEnabled.collectAsState()
     val bufferAmount by viewModel.bufferAmount.collectAsState()
     val baseCurrency by viewModel.baseCurrency.collectAsState()
     val walletBalance by viewModel.walletBalance.collectAsState()
@@ -134,6 +135,12 @@ fun BoxWithConstraintsScope.MenuScreen(
             item {
                 SearchCard {
                     nav.navigateTo(SearchScreen)
+                }
+            }
+
+            item {
+                AssistantCard {
+                    nav.navigateTo(AssistantScreen)
                 }
             }
 
@@ -296,23 +303,6 @@ fun BoxWithConstraintsScope.MenuScreen(
             }
             item {
                 MenuItemCard(
-                    icon = R.drawable.ic_vue_design_magicpen,
-                    title = stringResource(R.string.menu_item_assistant)
-                ) {
-                    nav.navigateTo(AssistantScreen)
-                }
-            }
-            item {
-                MenuItemCard(
-                    icon = R.drawable.ic_vue_security_lock,
-                    title = stringResource(R.string.menu_item_vault),
-                    subtitle = stringResource(R.string.menu_item_vault_sub)
-                ) {
-                    nav.navigateTo(VaultScreen)
-                }
-            }
-            item {
-                MenuItemCard(
                     icon = R.drawable.ic_vue_messages_direct,
                     title = stringResource(R.string.menu_item_qr_share)
                 ) {
@@ -344,6 +334,27 @@ fun BoxWithConstraintsScope.MenuScreen(
                     title = stringResource(R.string.menu_item_backup)
                 ) {
                     viewModel.backup(rootScreen)
+                }
+            }
+
+            // ------------------------------- Sécurité ------------------------------
+            item { SectionHeader(stringResource(R.string.menu_section_security)) }
+            item {
+                MenuItemCard(
+                    icon = R.drawable.ic_vue_security_lock,
+                    title = stringResource(R.string.menu_item_vault),
+                    subtitle = stringResource(R.string.menu_item_vault_sub)
+                ) {
+                    nav.navigateTo(VaultScreen)
+                }
+            }
+            item {
+                MenuItemCard(
+                    icon = R.drawable.ic_custom_fingerprint_m,
+                    title = stringResource(R.string.lock_app),
+                    subtitle = stringResource(R.string.menu_item_lock_sub)
+                ) {
+                    viewModel.setAppLock(!appLockEnabled)
                 }
             }
 
@@ -424,6 +435,34 @@ private fun SearchCard(onClick: () -> Unit) {
                 text = stringResource(R.string.menu_search),
                 style = MaterialTheme.typography.bodyLarge
             )
+        }
+    }
+}
+
+@Composable
+private fun AssistantCard(onClick: () -> Unit) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        onClick = onClick
+    ) {
+        Row(
+            modifier = Modifier.padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            IvyIcon(icon = R.drawable.ic_vue_design_magicpen)
+            Spacer(modifier = Modifier.width(12.dp))
+            Column {
+                Text(
+                    text = stringResource(R.string.menu_item_assistant),
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.W700
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = stringResource(R.string.menu_item_assistant_sub),
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
         }
     }
 }

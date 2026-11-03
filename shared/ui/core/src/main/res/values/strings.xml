@@ -604,6 +604,7 @@
     <string name="menu_section_settings">Settings</string>
     <string name="menu_section_subs_alerts">Subscriptions &amp; alerts</string>
     <string name="menu_section_data">Data</string>
+    <string name="menu_section_security">Security</string>
     <string name="menu_item_accounts">Accounts</string>
     <string name="menu_item_categories">Categories</string>
     <string name="menu_item_planned">Planned payments</string>
@@ -614,6 +615,7 @@
     <string name="menu_item_alerts">Bank alerts</string>
     <string name="menu_item_scan">Scan a receipt</string>
     <string name="menu_item_assistant">Assistant</string>
+    <string name="menu_item_assistant_sub">Questions about your money</string>
     <string name="menu_item_qr_share">Share by QR code</string>
     <string name="menu_item_rules">Automatic rules</string>
     <string name="menu_item_rules_sub">Categorisation</string>
@@ -689,6 +691,7 @@
     <!-- HeyMoney: Local password vault (on-device only, master password + AES-GCM) -->
     <string name="menu_item_vault">Password vault</string>
     <string name="menu_item_vault_sub">on this phone only</string>
+    <string name="menu_item_lock_sub">Fingerprint or PIN</string>
     <string name="vault_title">Password vault</string>
     <string name="vault_create_intro">Create your vault. Everything stays on this phone: your passwords are encrypted with a key derived from the master password you choose now, and HeyMoney never sees or sends them anywhere.</string>
     <string name="vault_master_password">Master password</string>

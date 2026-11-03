@@ -112,6 +112,7 @@
     <string name="menu_section_settings">Réglages</string>
     <string name="menu_section_subs_alerts">Abonnements &amp; alertes</string>
     <string name="menu_section_data">Données</string>
+    <string name="menu_section_security">Sécurité</string>
     <string name="menu_item_accounts">Comptes</string>
     <string name="menu_item_categories">Catégories</string>
     <string name="menu_item_planned">Paiements planifiés</string>
@@ -122,6 +123,7 @@
     <string name="menu_item_alerts">Alertes bancaires</string>
     <string name="menu_item_scan">Scan de reçu</string>
     <string name="menu_item_assistant">Assistant</string>
+    <string name="menu_item_assistant_sub">Tes questions sur ton argent</string>
     <string name="menu_item_qr_share">Partage par QR</string>
     <string name="menu_item_rules">Règles automatiques</string>
     <string name="menu_item_rules_sub">catégorisation</string>
@@ -204,6 +206,7 @@
     <!-- HeyMoney : Coffre de mots de passe local (sur l'appareil seulement, mot de passe maître + AES-GCM) -->
     <string name="menu_item_vault">Coffre de mots de passe</string>
     <string name="menu_item_vault_sub">sur ce téléphone seulement</string>
+    <string name="menu_item_lock_sub">Empreinte ou code PIN</string>
     <string name="vault_title">Coffre de mots de passe</string>
     <string name="vault_create_intro">Créez votre coffre. Tout reste sur ce téléphone : vos mots de passe sont chiffrés avec une clé dérivée du mot de passe maître que vous choisissez maintenant, et HeyMoney ne les voit jamais et ne les envoie nulle part.</string>
     <string name="vault_master_password">Mot de passe maître</string>
