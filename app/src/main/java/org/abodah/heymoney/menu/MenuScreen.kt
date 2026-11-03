@@ -3,6 +3,7 @@ package org.abodah.heymoney.menu
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraintsScope
 import androidx.compose.foundation.layout.Column
@@ -92,6 +93,7 @@ import org.abodah.heymoney.subscriptions.formatMoney
  * existing screen or triggers an existing action (export, backup, theme);
  * this screen adds no feature of its own.
  */
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun BoxWithConstraintsScope.MenuScreen(
     viewModel: MenuViewModel = screenScopedViewModel()
