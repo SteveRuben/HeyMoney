@@ -198,6 +198,9 @@ dependencies {
     implementation(libs.timber)
     implementation("com.google.zxing:core:3.5.3")
     implementation("com.google.mlkit:text-recognition:16.0.1")
+    // On-device LLM runtime (LiteRT-based) for the assistant's RAG model.
+    // The model itself is downloaded on demand, never bundled in the APK.
+    implementation("com.google.mediapipe:tasks-genai:0.10.35")
     implementation("androidx.camera:camera-camera2:1.3.4")
     implementation("androidx.camera:camera-lifecycle:1.3.4")
     implementation("androidx.camera:camera-view:1.3.4")
