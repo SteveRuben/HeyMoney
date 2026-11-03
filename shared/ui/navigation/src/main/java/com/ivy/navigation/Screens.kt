@@ -174,3 +174,9 @@ data object MonthlyChartScreen : Screen
 data object MenuScreen : Screen
 
 data object SetupScreen : Screen
+
+data object StatementAnalysisScreen : Screen
+
+data object VaultScreen : Screen
+
+data object MessageScanScreen : Screen

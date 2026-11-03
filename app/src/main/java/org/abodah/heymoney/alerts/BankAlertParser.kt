@@ -22,7 +22,8 @@ data class BankAlert(
         SMS("SMS"),
         NOTIFICATION("Notification"),
         MANUAL("Pasted"),
-        RECEIPT("Receipt")
+        RECEIPT("Receipt"),
+        EMAIL("Email")
     }
 
     companion object {

@@ -18,6 +18,9 @@ import org.abodah.heymoney.networth.NetWorthScreen
 import org.abodah.heymoney.chart.MonthlyChartScreen
 import org.abodah.heymoney.menu.MenuScreen
 import org.abodah.heymoney.setup.SetupScreen
+import org.abodah.heymoney.messages.MessageScanScreen
+import org.abodah.heymoney.statement.StatementAnalysisScreen
+import org.abodah.heymoney.vault.VaultScreen
 import com.ivy.balance.BalanceScreen
 import com.ivy.budgets.BudgetScreen
 import com.ivy.categories.CategoriesScreen
@@ -67,6 +70,9 @@ import com.ivy.navigation.NetWorthScreen
 import com.ivy.navigation.MonthlyChartScreen
 import com.ivy.navigation.MenuScreen
 import com.ivy.navigation.SetupScreen
+import com.ivy.navigation.MessageScanScreen
+import com.ivy.navigation.StatementAnalysisScreen
+import com.ivy.navigation.VaultScreen
 import com.ivy.navigation.TransactionsScreen
 import com.ivy.onboarding.OnboardingScreen
 import com.ivy.piechart.PieChartStatisticScreen
@@ -104,6 +110,9 @@ fun BoxWithConstraintsScope.IvyNavGraph(screen: Screen?) {
         is MonthlyChartScreen -> MonthlyChartScreen()
         is MenuScreen -> MenuScreen()
         is SetupScreen -> SetupScreen()
+        is StatementAnalysisScreen -> StatementAnalysisScreen()
+        is VaultScreen -> VaultScreen()
+        is MessageScanScreen -> MessageScanScreen()
         is OnboardingScreen -> OnboardingScreen(screen = screen)
         is ExchangeRatesScreen -> ExchangeRatesScreen()
         is EditTransactionScreen -> EditTransactionScreen(screen = screen)

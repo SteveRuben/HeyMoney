@@ -17,6 +17,11 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <!-- HeyMoney: retrospective scan of past SMS to spot carriers and
+         subscriptions. Read-only, on demand and fully on-device; this is a
+         Google Play restricted permission and needs a declaration at
+         publication time. -->
+    <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.CAMERA" />
     <!--  Show activity over the lockscreen  -->
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />

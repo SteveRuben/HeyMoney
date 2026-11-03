@@ -60,6 +60,9 @@ import com.ivy.navigation.ScanReceiptScreen
 import com.ivy.navigation.SearchScreen
 import com.ivy.navigation.SettingsScreen
 import com.ivy.navigation.SetupScreen
+import com.ivy.navigation.MessageScanScreen
+import com.ivy.navigation.StatementAnalysisScreen
+import com.ivy.navigation.VaultScreen
 import com.ivy.navigation.ShareScreen
 import com.ivy.navigation.AssistantScreen
 import com.ivy.navigation.SubscriptionsScreen
@@ -254,6 +257,30 @@ fun BoxWithConstraintsScope.MenuScreen(
             item {
                 MenuItemCard(title = stringResource(R.string.menu_item_import)) {
                     nav.navigateTo(ImportScreen(launchedFromOnboarding = false))
+                }
+            }
+            item {
+                MenuItemCard(
+                    title = stringResource(R.string.menu_item_statement_analysis),
+                    subtitle = stringResource(R.string.menu_item_statement_analysis_sub)
+                ) {
+                    nav.navigateTo(StatementAnalysisScreen)
+                }
+            }
+            item {
+                MenuItemCard(
+                    title = stringResource(R.string.menu_item_vault),
+                    subtitle = stringResource(R.string.menu_item_vault_sub)
+                ) {
+                    nav.navigateTo(VaultScreen)
+                }
+            }
+            item {
+                MenuItemCard(
+                    title = stringResource(R.string.menu_item_messages),
+                    subtitle = stringResource(R.string.menu_item_messages_sub)
+                ) {
+                    nav.navigateTo(MessageScanScreen)
                 }
             }
             item {
