@@ -11,6 +11,11 @@ import org.abodah.heymoney.receipts.LiveScanScreen
 import org.abodah.heymoney.assistant.AssistantScreen
 import org.abodah.heymoney.news.NewsScreen
 import org.abodah.heymoney.share.ShareScreen
+import org.abodah.heymoney.rules.CategoryRulesScreen
+import org.abodah.heymoney.subscriptions.SubscriptionGuideScreen
+import org.abodah.heymoney.subscriptions.SubscriptionsScreen
+import org.abodah.heymoney.networth.NetWorthScreen
+import org.abodah.heymoney.chart.MonthlyChartScreen
 import com.ivy.balance.BalanceScreen
 import com.ivy.budgets.BudgetScreen
 import com.ivy.categories.CategoriesScreen
@@ -34,6 +39,7 @@ import com.ivy.navigation.BalanceScreen
 import com.ivy.navigation.BudgetScreen
 import com.ivy.navigation.CSVScreen
 import com.ivy.navigation.CategoriesScreen
+import com.ivy.navigation.CategoryRulesScreen
 import com.ivy.navigation.ContributorsScreen
 import com.ivy.navigation.DisclaimerScreen
 import com.ivy.navigation.EditPlannedScreen
@@ -53,6 +59,10 @@ import com.ivy.navigation.ReportScreen
 import com.ivy.navigation.Screen
 import com.ivy.navigation.SearchScreen
 import com.ivy.navigation.SettingsScreen
+import com.ivy.navigation.SubscriptionDetailsScreen
+import com.ivy.navigation.SubscriptionsScreen
+import com.ivy.navigation.NetWorthScreen
+import com.ivy.navigation.MonthlyChartScreen
 import com.ivy.navigation.TransactionsScreen
 import com.ivy.onboarding.OnboardingScreen
 import com.ivy.piechart.PieChartStatisticScreen
@@ -83,6 +93,11 @@ fun BoxWithConstraintsScope.IvyNavGraph(screen: Screen?) {
         is AssistantScreen -> AssistantScreen()
         is NewsScreen -> NewsScreen()
         is ShareScreen -> ShareScreen()
+        is CategoryRulesScreen -> CategoryRulesScreen()
+        is SubscriptionsScreen -> SubscriptionsScreen()
+        is SubscriptionDetailsScreen -> SubscriptionGuideScreen(subscriptionKey = screen.subscriptionKey)
+        is NetWorthScreen -> NetWorthScreen()
+        is MonthlyChartScreen -> MonthlyChartScreen()
         is OnboardingScreen -> OnboardingScreen(screen = screen)
         is ExchangeRatesScreen -> ExchangeRatesScreen()
         is EditTransactionScreen -> EditTransactionScreen(screen = screen)

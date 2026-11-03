@@ -19,6 +19,7 @@ import com.ivy.data.repository.CategoryRepository
 import com.ivy.data.repository.CurrencyRepository
 import com.ivy.data.repository.TransactionRepository
 import com.ivy.data.repository.mapper.TransactionMapper
+import com.ivy.data.rules.CategoryRuleStore
 import com.ivy.design.IVY_COLOR_PICKER_COLORS_FREE
 import com.ivy.importdata.csv.ImportantFields
 import com.ivy.importdata.csv.OptionalFields
@@ -46,6 +47,7 @@ class CSVImporterV2 @Inject constructor(
     private val currencyRepository: CurrencyRepository,
     private val accountRepository: AccountRepository,
     private val timeConverter: TimeConverter,
+    private val categoryRuleStore: CategoryRuleStore,
 ) {
 
     lateinit var accounts: List<Account>
@@ -208,15 +210,6 @@ class CSVImporterV2 @Inject constructor(
             orderNum = null,
         ) ?: return null
 
-        val category = mapCategory(
-            categoryNameString = parseCategory(
-                value = row.extractValue(optionalFields.category),
-                metadata = optionalFields.category.metadata
-            ),
-            color = null,
-            icon = null,
-            orderNum = null,
-        )
         val title = parseTitle(
             row.extractValue(optionalFields.title),
             optionalFields.title.metadata
@@ -225,6 +218,15 @@ class CSVImporterV2 @Inject constructor(
             row.extractValue(optionalFields.description),
             optionalFields.description.metadata
         )
+        val category = mapCategory(
+            categoryNameString = parseCategory(
+                value = row.extractValue(optionalFields.category),
+                metadata = optionalFields.category.metadata
+            ),
+            color = null,
+            icon = null,
+            orderNum = null,
+        ) ?: ruleCategory(title = title, description = description)
 
         return Transaction(
             id = UUID.randomUUID(),
@@ -305,6 +307,16 @@ class CSVImporterV2 @Inject constructor(
         } catch (e: Exception) {
             baseCurrency
         }
+    }
+
+    /**
+     * Bank and Mobile Money statements carry no category column: when the file
+     * itself names no category, the user's own rules (keyword → category) get
+     * a say, matched on the row's title and description.
+     */
+    private fun ruleCategory(title: String?, description: String?): Category? {
+        val categoryId = categoryRuleStore.matchCategoryId(title, description) ?: return null
+        return categories.firstOrNull { it.id.value == categoryId }
     }
 
     private suspend fun mapCategory(

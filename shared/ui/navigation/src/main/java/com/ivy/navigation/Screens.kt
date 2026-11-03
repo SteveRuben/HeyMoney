@@ -158,3 +158,15 @@ data object ShareScreen : Screen
 data object AiSettingsScreen : Screen
 
 data object ScanReceiptScreen : Screen
+
+data object CategoryRulesScreen : Screen
+
+data object SubscriptionsScreen : Screen
+
+data class SubscriptionDetailsScreen(
+    val subscriptionKey: String
+) : Screen
+
+data object NetWorthScreen : Screen
+
+data object MonthlyChartScreen : Screen

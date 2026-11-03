@@ -8,7 +8,9 @@ import com.ivy.data.db.dao.read.AccountDao
 import com.ivy.data.db.dao.read.CategoryDao
 import com.ivy.data.db.dao.read.TransactionDao
 import com.ivy.data.db.dao.write.WriteTransactionDao
+import com.ivy.data.db.entity.CategoryEntity
 import com.ivy.data.db.entity.TransactionEntity
+import com.ivy.data.rules.CategoryRuleStore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -99,6 +101,7 @@ class AlertSaver @Inject constructor(
     private val writeTransactionDao: WriteTransactionDao,
     private val accountDao: AccountDao,
     private val categoryDao: CategoryDao,
+    private val categoryRuleStore: CategoryRuleStore,
 ) {
     /** Where the alert would land, shown on the card before the user confirms. */
     suspend fun preview(alert: BankAlert): AlertDraft = withContext(Dispatchers.IO) {
@@ -130,8 +133,14 @@ class AlertSaver @Inject constructor(
             ?: accounts.minByOrNull { it.orderNum }
     }
 
-    // 1) category already used for this merchant, 2) category whose name matches the wording
-    private suspend fun pickCategory(alert: BankAlert) = categoryDao.findAll().let { categories ->
+    // 1) the user's own rules, 2) category already used for this merchant,
+    // 3) category whose name matches the wording
+    private suspend fun pickCategory(alert: BankAlert): CategoryEntity? {
+        val categories = categoryDao.findAll()
+        // 1) the user's own rules win over every automatic guess
+        categoryRuleStore.matchCategoryId(alert.merchant, alert.raw)
+            ?.let { ruleCategoryId -> categories.firstOrNull { it.id == ruleCategoryId } }
+            ?.let { return it }
         val merchant = alert.merchant.trim().lowercase(Locale.ROOT)
         val remembered = transactionDao.findAll()
             .filter { it.categoryId != null && it.title?.trim()?.lowercase(Locale.ROOT) == merchant }
@@ -139,7 +148,7 @@ class AlertSaver @Inject constructor(
             .eachCount()
             .maxByOrNull { it.value }
             ?.key
-        categories.firstOrNull { it.id == remembered }
+        return categories.firstOrNull { it.id == remembered }
             ?: CategoryHints.match(alert.raw, categories.map { it.name to it })
     }
 }

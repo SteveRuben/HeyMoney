@@ -33,6 +33,10 @@ import androidx.compose.ui.unit.dp
 import com.ivy.design.system.colors.IvyColors.Gray
 import com.ivy.navigation.AiSettingsScreen
 import com.ivy.navigation.AlertsScreen
+import com.ivy.navigation.CategoryRulesScreen
+import com.ivy.navigation.SubscriptionsScreen
+import com.ivy.navigation.NetWorthScreen
+import com.ivy.navigation.MonthlyChartScreen
 import com.ivy.navigation.AssistantScreen
 import com.ivy.navigation.NewsScreen
 import com.ivy.navigation.ScanReceiptScreen
@@ -150,6 +154,10 @@ private data class HeyMoneyEntry(val title: String, val description: String, val
 private val heyMoneyEntries = listOf(
     HeyMoneyEntry("Scan a receipt", "Film a receipt and add the expense in one tap", ScanReceiptScreen),
     HeyMoneyEntry("Bank alerts", "Turn bank SMS, notifications and receipts into expenses to confirm", AlertsScreen),
+    HeyMoneyEntry("Subscriptions", "What you pay every month, what it costs per year, and renewal reminders", SubscriptionsScreen),
+    HeyMoneyEntry("Category rules", "File alerts and imported statements automatically, by keyword", CategoryRulesScreen),
+    HeyMoneyEntry("Net worth", "Accounts plus what you are still owed, minus what you still owe, per currency", NetWorthScreen),
+    HeyMoneyEntry("Monthly chart", "Income versus expenses, month by month", MonthlyChartScreen),
     HeyMoneyEntry("Assistant", "Ask questions about your balance and spending", AssistantScreen),
     HeyMoneyEntry("Investment news", "Markets, IPOs and the economy", NewsScreen),
     HeyMoneyEntry("Share with a friend", "Send or receive expenses with a QR code, no server", ShareScreen),

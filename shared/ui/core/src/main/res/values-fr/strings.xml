@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- HeyMoney: Category rules (automatic categorisation for alerts and CSV imports) -->
+    <string name="rules_title">Règles de catégories</string>
+    <string name="rules_intro">Quand une alerte bancaire ou un relevé importé ne nomme aucune catégorie, HeyMoney classe la transaction dans la catégorie de la première règle dont le mot-clé apparaît dans son libellé.</string>
+    <string name="rules_keyword_label">Mot-clé ou marchand</string>
+    <string name="rules_keyword_hint">ex. Netflix, Carrefour, Orange Money</string>
+    <string name="rules_category_label">Catégorie</string>
+    <string name="rules_add">Ajouter la règle</string>
+    <string name="rules_empty">Aucune règle pour le moment. Ajoutez-en une ci-dessus : les transactions correspondantes seront classées automatiquement.</string>
+    <string name="rules_delete">Supprimer</string>
+    <string name="rules_unknown_category">(catégorie supprimée)</string>
+
+    <!-- HeyMoney: Subscriptions (detection, cancel guide, negotiation, renewal reminders) -->
+    <string name="subs_title">Abonnements</string>
+    <string name="subs_intro">Charges récurrentes trouvées dans vos transactions et vos paiements planifiés. Confirmez celles qui sont de vrais abonnements pour recevoir un rappel avant leur renouvellement.</string>
+    <string name="subs_section_detected">Détectés</string>
+    <string name="subs_section_confirmed">Confirmés</string>
+    <string name="subs_section_ignored">Ignorés</string>
+    <string name="subs_empty">Aucune charge récurrente détectée pour le moment.\nUn abonnement apparaît ici après quelques charges semblables : même service, montant proche, rythme régulier.</string>
+    <string name="subs_yearly_cost_label">Coût estimé par année</string>
+    <string name="subs_per_year">%1$s / an</string>
+    <string name="subs_next_due">Prochain : %1$s</string>
+    <string name="subs_last_charge">Dernier : %1$s</string>
+    <string name="subs_charges_count">%1$d prélèvements</string>
+    <string name="subs_source_planned">Paiement planifié</string>
+    <string name="subs_source_detected">Détecté</string>
+    <string name="subs_freq_weekly">Chaque semaine</string>
+    <string name="subs_freq_biweekly">Toutes les 2 semaines</string>
+    <string name="subs_freq_monthly">Chaque mois</string>
+    <string name="subs_freq_quarterly">Tous les 3 mois</string>
+    <string name="subs_freq_semiannual">Tous les 6 mois</string>
+    <string name="subs_freq_yearly">Chaque année</string>
+    <string name="subs_action_confirm">C\'est un abonnement</string>
+    <string name="subs_action_ignore">Ce n\'est pas un abonnement</string>
+    <string name="subs_action_restore">Restaurer</string>
+    <string name="subs_action_details">Détails</string>
+    <string name="subs_reminder_label">Rappel de renouvellement</string>
+    <string name="subs_reminder_off">Désactivé</string>
+    <string name="subs_reminder_days_before">%1$d jours avant</string>
+    <string name="subs_reminder_explainer">HeyMoney vérifie une fois par jour et vous avertit avant le renouvellement d\'un abonnement confirmé. Rien ne quitte votre téléphone.</string>
+    <string name="subs_note_label">Vos notes</string>
+    <string name="subs_note_hint">Numéro de contrat, personne appelée, conditions obtenues…</string>
+    <string name="subs_note_save">Enregistrer la note</string>
+    <string name="subs_note_saved">Note enregistrée</string>
+    <string name="subs_cancel_title">Résilier cet abonnement</string>
+    <string name="subs_cancel_intro">HeyMoney ne peut pas résilier à votre place : seul le service le peut. Suivez ces étapes dans le service lui-même, puis revenez ici et marquez-le comme ignoré.</string>
+    <string name="subs_cancel_generic">1. Ouvrez l\'application ou le site du service et connectez-vous.\n2. Allez dans Compte, puis Abonnements ou Facturation.\n3. Sélectionnez cet abonnement et choisissez Résilier / Désactiver le renouvellement automatique.\n4. Conservez le courriel ou la capture de confirmation jusqu\'à la fin de la période.\n5. Vérifiez le relevé suivant : aucune nouvelle charge ne doit apparaître.</string>
+    <string name="subs_cancel_open_page">Ouvrir la page de résiliation</string>
+    <string name="subs_cancel_done_hint">Résilié ? Touchez « Ce n\'est pas un abonnement » ci-dessus pour arrêter les rappels.</string>
+    <string name="subs_negotiate_title">Négocier un meilleur prix</string>
+    <string name="subs_negotiate_intro">Copiez un gabarit, ajustez les détails, puis envoyez-le ou utilisez-le au téléphone. Les offres de rétention se font le plus souvent par téléphone, près d\'une date de renouvellement.</string>
+    <string name="subs_template_copy">Copier</string>
+    <string name="subs_template_copied">Copié dans le presse-papiers</string>
+    <string name="subs_template_email_polite_title">Courriel — demande polie</string>
+    <string name="subs_template_email_polite">Bonjour à l\'équipe {provider},\n\nJe suis client depuis {tenure} et je paie actuellement {price} pour mon abonnement. Avant mon prochain renouvellement, je voulais savoir si un tarif plus bas ou un rabais de fidélité est possible sur mon forfait.\n\nJe préfère rester chez vous plutôt que changer. Pouvez-vous faire quelque chose sur le prix ?\n\nMerci,</string>
+    <string name="subs_template_email_firm_title">Courriel — plus ferme, renouvellement proche</string>
+    <string name="subs_template_email_firm">Bonjour à l\'équipe {provider},\n\nMon abonnement se renouvelle bientôt à {price}. J\'ai comparé les alternatives et le même service coûte moins cher ailleurs, alors j\'envisage de résilier au renouvellement.\n\nAvant de le faire, pourriez-vous égaler une meilleure offre ou appliquer un rabais de rétention ? Je suis client depuis {tenure} et je préférerais rester si le prix est raisonnable.\n\nDites-moi ce que vous pouvez offrir.\n\nMerci,</string>
+    <string name="subs_template_phone_title">Script d\'appel</string>
+    <string name="subs_template_phone">« Bonjour, je vous appelle au sujet de mon abonnement. Je paie {price} et mon renouvellement approche. Je songe à résilier parce que c\'est devenu trop cher pour moi.\n\n[S\'ils refusent] Y a-t-il un service de rétention ou de fidélité qui pourrait regarder mon dossier ? Je suis client depuis {tenure}.\n\n[S\'ils offrent un rabais] Merci — pouvez-vous me confirmer le nouveau prix, sa durée, et me l\'envoyer par écrit ? »</string>
+    <string name="subs_tenure_default">un certain temps</string>
+    <string name="subs_tenure_years">%1$d ans</string>
+    <string name="subs_tenure_one_year">1 an</string>
+    <string name="subs_tenure_months">%1$d mois</string>
+    <string name="subs_notification_channel_name">Renouvellements d\'abonnements</string>
+    <string name="subs_notification_channel_description">Rappels quelques jours avant le renouvellement d\'un abonnement confirmé.</string>
+    <string name="subs_notification_title">Un abonnement se renouvelle bientôt</string>
+    <string name="subs_notification_text">%1$s (%2$s) se renouvelle le %3$s.</string>
+
+    <string name="subs_cancel_netflix">1. Ouvrez netflix.com et connectez-vous.\n2. Allez dans Compte, puis Abonnement.\n3. Choisissez « Annuler l\'abonnement » et confirmez.\nVous gardez l\'accès jusqu\'à la fin de la période payée.</string>
+    <string name="subs_cancel_spotify">1. Ouvrez spotify.com/account et connectez-vous (la résiliation ne se fait pas dans l\'application si vous payez Spotify directement).\n2. Sous « Votre abonnement », choisissez « Changer d\'abonnement ».\n3. Faites défiler jusqu\'à Spotify Free et choisissez « Annuler Premium ».\nSi vous payez via une boutique d\'applications ou un opérateur, résiliez là-bas.</string>
+    <string name="subs_cancel_youtube">1. Ouvrez youtube.com/paid_memberships en étant connecté.\n2. Sélectionnez l\'abonnement, puis « Désactiver ».\n3. Choisissez « Annuler l\'abonnement » et confirmez.</string>
+    <string name="subs_cancel_amazon_prime">1. Ouvrez la page de votre compte Amazon.\n2. Allez dans « Votre abonnement Prime » (Prime Central).\n3. Choisissez « Mettre à jour, annuler et plus », puis « Mettre fin à l\'abonnement » et confirmez.\nDes offres vont apparaître en chemin — continuez à choisir de mettre fin à l\'abonnement.</string>
+    <string name="subs_cancel_disney">1. Ouvrez disneyplus.com et connectez-vous.\n2. Allez dans Compte, puis Abonnement.\n3. Sélectionnez votre forfait et choisissez « Annuler l\'abonnement ».\nSi vous êtes abonné via une boutique d\'applications, résiliez dans cette boutique.</string>
+    <string name="subs_cancel_apple">Plusieurs services facturent via Apple. Pour résilier :\n1. Sur iPhone/iPad : Réglages, puis votre nom tout en haut.\n2. Touchez « Abonnements ».\n3. Sélectionnez l\'abonnement et touchez « Annuler l\'abonnement ».\nLa résiliation arrête le prochain paiement ; vous gardez l\'accès jusqu\'à la fin de la période.</string>
+    <string name="subs_cancel_google">Plusieurs services facturent via Google Play. Pour résilier :\n1. Ouvrez l\'application Play Store, touchez votre photo de profil.\n2. Allez dans « Paiements et abonnements », puis « Abonnements ».\n3. Sélectionnez l\'abonnement et touchez « Annuler l\'abonnement ».</string>
+    <string name="subs_cancel_google_one">1. Ouvrez one.google.com et connectez-vous.\n2. Allez dans Paramètres, puis « Annuler l\'abonnement ».\n3. Confirmez. Votre espace supplémentaire reste actif jusqu\'à la fin de la période, puis les fichiers au-delà du quota gratuit ne se synchronisent plus.</string>
+    <string name="subs_cancel_microsoft">1. Ouvrez account.microsoft.com/services et connectez-vous.\n2. Trouvez Microsoft 365 ou votre abonnement.\n3. Choisissez « Annuler » ou « Désactiver la facturation récurrente » et confirmez.</string>
+    <string name="subs_cancel_adobe">1. Ouvrez account.adobe.com/plans et connectez-vous.\n2. Sur votre formule, choisissez « Gérer la formule », puis « Annuler votre formule ».\n3. Suivez les étapes et confirmez par courriel.\nRésilier tôt une formule annuelle peut entraîner des frais — vérifiez le montant affiché avant de confirmer.</string>
+    <string name="subs_cancel_dropbox">1. Ouvrez dropbox.com et connectez-vous.\n2. Cliquez sur votre avatar, puis Paramètres, puis Formule.\n3. Choisissez « Annuler la formule » en bas et confirmez.</string>
+    <string name="subs_cancel_canal">1. Ouvrez canalplus.com et connectez-vous à votre Espace Client.\n2. Allez dans « Abonnement », puis « Résilier ».\n3. Suivez les étapes, ou appelez le numéro indiqué si la résiliation en ligne n\'est pas offerte sur votre formule.\nConservez la confirmation de résiliation jusqu\'à votre dernière facture.</string>
+    <string name="subs_cancel_telecom">Pour un fournisseur téléphone/internet (Orange, Bell, Rogers, Telus, Vidéotron, SFR, Free…) :\n1. Connectez-vous à votre espace client et cherchez « Gérer mon forfait / mon contrat ».\n2. Plusieurs forfaits ne se résilient que par téléphone ou clavardage — le numéro est sur votre facture.\n3. Demandez le numéro de confirmation de la résiliation et la date de dernière facturation.\n4. Si vous avez une date de fin d\'engagement, résilier avant peut entraîner des frais — demandez-les d\'abord.</string>
+
+    <!-- HeyMoney: Net worth (accounts + what loans still owe, per currency, never converted) -->
+    <string name="nw_title">Valeur nette</string>
+    <string name="nw_intro">Ce que vous avez, plus ce qu\'on vous doit encore, moins ce que vous devez encore.</string>
+    <string name="nw_accounts_label">Comptes</string>
+    <string name="nw_lent_label">Prêté — reste à recevoir</string>
+    <string name="nw_borrowed_label">Emprunté — reste à rembourser</string>
+    <string name="nw_net_label">Valeur nette</string>
+    <string name="nw_details_hide">Masquer le détail</string>
+    <string name="nw_empty">Rien à afficher pour le moment.\nAjoutez un compte ou enregistrez un prêt et votre valeur nette apparaîtra ici.</string>
+    <string name="nw_note">Calculée par devise : les montants ne sont jamais convertis. Seuls les comptes inclus dans votre solde sont comptés, et chaque prêt compte pour ce qu\'il en reste — un prêt lié à un compte aussi, parce que son restant dû ne fait partie d\'aucun solde de compte.</string>
+
+    <!-- HeyMoney: Monthly chart (income vs expenses over time) -->
+    <string name="chart_title">Graphique mensuel</string>
+    <string name="chart_intro">Revenus et dépenses par mois, à partir de vos transactions.</string>
+    <string name="chart_income">Revenus</string>
+    <string name="chart_expenses">Dépenses</string>
+    <string name="chart_net">Net : %1$s</string>
+    <string name="chart_period_months">%1$d mois</string>
+    <string name="chart_previous_period">Période précédente</string>
+    <string name="chart_next_period">Période suivante</string>
+    <string name="chart_empty">Aucun revenu ni dépense sur cette période.</string>
+</resources>

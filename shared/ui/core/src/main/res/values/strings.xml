@@ -491,4 +491,107 @@
     <string name="language">Language</string>
     <string name="advanced_features">Advanced features</string>
     <string name="scan_receipt_short">Scan a receipt</string>
+
+    <!-- HeyMoney: Category rules (automatic categorisation for alerts and CSV imports) -->
+    <string name="rules_title">Category rules</string>
+    <string name="rules_intro">When a bank alert or an imported statement names no category, HeyMoney files the transaction under the category of the first rule whose keyword appears in its wording.</string>
+    <string name="rules_keyword_label">Keyword or merchant</string>
+    <string name="rules_keyword_hint">e.g. Netflix, Carrefour, Orange Money</string>
+    <string name="rules_category_label">Category</string>
+    <string name="rules_add">Add rule</string>
+    <string name="rules_empty">No rule yet. Add one above: matching transactions will be filed automatically from then on.</string>
+    <string name="rules_delete">Delete</string>
+    <string name="rules_unknown_category">(deleted category)</string>
+
+    <!-- HeyMoney: Subscriptions (detection, cancel guide, negotiation, renewal reminders) -->
+    <string name="subs_title">Subscriptions</string>
+    <string name="subs_intro">Recurring charges found in your transactions and planned payments. Confirm the ones that are real subscriptions to get renewal reminders.</string>
+    <string name="subs_section_detected">Detected</string>
+    <string name="subs_section_confirmed">Confirmed</string>
+    <string name="subs_section_ignored">Ignored</string>
+    <string name="subs_empty">No recurring charge detected yet.\nA subscription appears here after a few similar charges: same service, similar amount, regular rhythm.</string>
+    <string name="subs_yearly_cost_label">Estimated yearly cost</string>
+    <string name="subs_per_year">%1$s / year</string>
+    <string name="subs_next_due">Next: %1$s</string>
+    <string name="subs_last_charge">Last: %1$s</string>
+    <string name="subs_charges_count">%1$d charges</string>
+    <string name="subs_source_planned">Planned payment</string>
+    <string name="subs_source_detected">Detected</string>
+    <string name="subs_freq_weekly">Weekly</string>
+    <string name="subs_freq_biweekly">Every 2 weeks</string>
+    <string name="subs_freq_monthly">Monthly</string>
+    <string name="subs_freq_quarterly">Every 3 months</string>
+    <string name="subs_freq_semiannual">Every 6 months</string>
+    <string name="subs_freq_yearly">Yearly</string>
+    <string name="subs_action_confirm">This is a subscription</string>
+    <string name="subs_action_ignore">Not a subscription</string>
+    <string name="subs_action_restore">Restore</string>
+    <string name="subs_action_details">Details</string>
+    <string name="subs_reminder_label">Renewal reminder</string>
+    <string name="subs_reminder_off">Off</string>
+    <string name="subs_reminder_days_before">%1$d days before</string>
+    <string name="subs_reminder_explainer">HeyMoney checks once a day and notifies you before a confirmed subscription renews. Nothing leaves your phone.</string>
+    <string name="subs_note_label">Your notes</string>
+    <string name="subs_note_hint">Contract number, who you called, conditions you got…</string>
+    <string name="subs_note_save">Save note</string>
+    <string name="subs_note_saved">Note saved</string>
+    <string name="subs_cancel_title">Cancel this subscription</string>
+    <string name="subs_cancel_intro">HeyMoney cannot cancel for you: only the service can. Follow these steps in the service itself, then come back and mark it ignored here.</string>
+    <string name="subs_cancel_generic">1. Open the service\'s app or website and sign in.\n2. Go to Account, then Subscriptions or Billing.\n3. Select this subscription and choose Cancel / Turn off auto-renew.\n4. Keep the confirmation email or screenshot until the period ends.\n5. Check the next statement: no new charge should appear.</string>
+    <string name="subs_cancel_open_page">Open the cancellation page</string>
+    <string name="subs_cancel_done_hint">Cancelled it? Tap "Not a subscription" above to stop the reminders.</string>
+    <string name="subs_negotiate_title">Negotiate a better price</string>
+    <string name="subs_negotiate_intro">Copy a template, adjust the details, and send it or use it on a call. Retention offers are most common by phone, near a renewal date.</string>
+    <string name="subs_template_copy">Copy</string>
+    <string name="subs_template_copied">Copied to clipboard</string>
+    <string name="subs_template_email_polite_title">Email — polite request</string>
+    <string name="subs_template_email_polite">Hello {provider} team,\n\nI have been a customer for {tenure} and I currently pay {price} for my subscription. Before my next renewal, I wanted to ask whether a lower rate or a loyalty discount is available on my plan.\n\nI would rather stay with you than switch. Is there anything you can do on the price?\n\nThank you,</string>
+    <string name="subs_template_email_firm_title">Email — firmer, renewal coming</string>
+    <string name="subs_template_email_firm">Hello {provider} team,\n\nMy subscription renews soon at {price}. I have compared alternatives and the same service costs less elsewhere, so I am considering cancelling at renewal.\n\nBefore I do, could you match a better offer or apply a retention discount? I have been a customer for {tenure} and I would prefer to stay if the price makes sense.\n\nPlease let me know what you can offer.\n\nThank you,</string>
+    <string name="subs_template_phone_title">Phone script</string>
+    <string name="subs_template_phone">"Hello, I\'m calling about my subscription. I pay {price} and my renewal is coming up. I\'m thinking of cancelling because it has become too expensive for me.\n\n[If they say no] Is there a retention or loyalty department that could look at my account? I have been a customer for {tenure}.\n\n[If they offer a discount] Thank you — could you confirm the new price, how long it lasts, and send it to me in writing?"</string>
+    <string name="subs_tenure_default">a while</string>
+    <string name="subs_tenure_years">%1$d years</string>
+    <string name="subs_tenure_one_year">1 year</string>
+    <string name="subs_tenure_months">%1$d months</string>
+    <string name="subs_notification_channel_name">Subscription renewals</string>
+    <string name="subs_notification_channel_description">Reminders a few days before a confirmed subscription renews.</string>
+    <string name="subs_notification_title">Subscription renewing soon</string>
+    <string name="subs_notification_text">%1$s (%2$s) renews on %3$s.</string>
+
+    <string name="subs_cancel_netflix">1. Open netflix.com and sign in.\n2. Go to Account, then Membership.\n3. Choose "Cancel Membership" and confirm.\nYou keep access until the end of the paid period.</string>
+    <string name="subs_cancel_spotify">1. Open spotify.com/account and sign in (cancellation is not in the app if you pay Spotify directly).\n2. Under "Your plan", choose "Change plan".\n3. Scroll to Spotify Free and choose "Cancel Premium".\nIf you pay through an app store or a phone carrier, cancel there instead.</string>
+    <string name="subs_cancel_youtube">1. Open youtube.com/paid_memberships while signed in.\n2. Select the membership, then "Deactivate".\n3. Choose "Cancel membership" and confirm.</string>
+    <string name="subs_cancel_amazon_prime">1. Open your Amazon account page.\n2. Go to "Your Prime Membership" (Prime Central).\n3. Choose "Update, cancel and more", then "End membership" and confirm.\nWatch out for offers along the way — keep choosing to end the membership.</string>
+    <string name="subs_cancel_disney">1. Open disneyplus.com and sign in.\n2. Go to Account, then Subscription.\n3. Select your plan and choose "Cancel Subscription".\nIf you subscribed through an app store, cancel in that store instead.</string>
+    <string name="subs_cancel_apple">Many services bill through Apple. To cancel:\n1. On iPhone/iPad: Settings, then your name at the top.\n2. Tap "Subscriptions".\n3. Select the subscription and tap "Cancel Subscription".\nCancelling stops the next payment; you keep access until the period ends.</string>
+    <string name="subs_cancel_google">Many services bill through Google Play. To cancel:\n1. Open the Play Store app, tap your profile picture.\n2. Go to "Payments and subscriptions", then "Subscriptions".\n3. Select the subscription and tap "Cancel subscription".</string>
+    <string name="subs_cancel_google_one">1. Open one.google.com and sign in.\n2. Go to Settings, then "Cancel membership".\n3. Confirm. Your extra storage stays until the period ends, then files above the free quota stop syncing.</string>
+    <string name="subs_cancel_microsoft">1. Open account.microsoft.com/services and sign in.\n2. Find Microsoft 365 or your subscription.\n3. Choose "Cancel" or "Turn off recurring billing" and confirm.</string>
+    <string name="subs_cancel_adobe">1. Open account.adobe.com/plans and sign in.\n2. On your plan, choose "Manage plan", then "Cancel your plan".\n3. Follow the steps and confirm by email.\nCancelling early on an annual plan can trigger a fee — check the amount shown before confirming.</string>
+    <string name="subs_cancel_dropbox">1. Open dropbox.com and sign in.\n2. Click your avatar, then Settings, then Plan.\n3. Choose "Cancel plan" at the bottom and confirm.</string>
+    <string name="subs_cancel_canal">1. Open canalplus.com and sign in to your account (Espace Client).\n2. Go to "Abonnement" (Subscription), then "Résilier" (Cancel).\n3. Follow the steps, or call the number shown there if online cancellation is not offered on your plan.\nKeep the cancellation confirmation until your last invoice.</string>
+    <string name="subs_cancel_telecom">For a phone/internet provider (Orange, Bell, Rogers, Telus, Vidéotron, SFR, Free…):\n1. Sign in to your customer account and look for "Manage my plan / contract".\n2. Many plans can only be cancelled by phone or chat — the number is on your bill.\n3. Ask for the cancellation confirmation number and the last billing date.\n4. If you have a contract end date, cancelling before it can trigger fees — ask what they are first.</string>
+
+    <!-- HeyMoney: Net worth (accounts + what loans still owe, per currency, never converted) -->
+    <string name="nw_title">Net worth</string>
+    <string name="nw_intro">What you have, plus what you are still owed, minus what you still owe.</string>
+    <string name="nw_accounts_label">Accounts</string>
+    <string name="nw_lent_label">Lent — still to receive</string>
+    <string name="nw_borrowed_label">Borrowed — still to pay back</string>
+    <string name="nw_net_label">Net worth</string>
+    <string name="nw_details_hide">Hide details</string>
+    <string name="nw_empty">Nothing to show yet.\nAdd an account or record a loan and your net worth will appear here.</string>
+    <string name="nw_note">Calculated per currency: amounts are never converted. Only accounts included in your balance are counted, and every loan counts for what is left of it — a loan linked to an account too, because its remaining amount is not part of any account balance.</string>
+
+    <!-- HeyMoney: Monthly chart (income vs expenses over time) -->
+    <string name="chart_title">Monthly chart</string>
+    <string name="chart_intro">Income and expenses per month, from your transactions.</string>
+    <string name="chart_income">Income</string>
+    <string name="chart_expenses">Expenses</string>
+    <string name="chart_net">Net: %1$s</string>
+    <string name="chart_period_months">%1$d months</string>
+    <string name="chart_previous_period">Previous period</string>
+    <string name="chart_next_period">Next period</string>
+    <string name="chart_empty">No income or expense in this period.</string>
 </resources>
