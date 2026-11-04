@@ -288,7 +288,48 @@ private fun TotalBalanceCard(
     baseCurrency: String,
     totalBalance: Double
 ) {
-    Box(Modifier.fillMaxWidth().height(48.dp)) {}
+    val textColor = Color(palette.totalText)
+    Column(
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .fillMaxWidth()
+            .clip(CardShape)
+            .background(
+                brush = Brush.linearGradient(
+                    colors = listOf(
+                        Color(palette.totalGradientStart),
+                        Color(palette.totalGradientEnd)
+                    )
+                ),
+                shape = CardShape
+            )
+            .border(2.dp, CardBorder, CardShape)
+            .padding(horizontal = 24.dp, vertical = 22.dp)
+    ) {
+        Text(
+            text = stringResource(R.string.accounts_total_label),
+            style = TextStyle(
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Bold,
+                color = textColor.copy(alpha = 0.85f),
+                letterSpacing = 1.2.sp
+            )
+        )
+        Spacer(Modifier.height(8.dp))
+        Text(
+            text = totalBalance.amountWithSymbol(baseCurrency),
+            style = TextStyle(
+                fontSize = 38.sp,
+                fontWeight = FontWeight.ExtraBold,
+                color = textColor
+            )
+        )
+        Spacer(Modifier.height(6.dp))
+        Text(
+            text = stringResource(R.string.accounts_total_converted, baseCurrency),
+            style = UI.typo.b2.style(color = textColor.copy(alpha = 0.85f))
+        )
+    }
 }
 
 @Composable
@@ -311,7 +352,25 @@ private fun AccountStackCard(
 
 @Composable
 private fun AddAccountButton(onClick: () -> Unit) {
-    Box(Modifier.fillMaxWidth().height(48.dp)) {}
+    Box(
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .fillMaxWidth()
+            .height(64.dp)
+            .clip(RoundedCornerShape(50))
+            .background(Color(0xFF141414), RoundedCornerShape(50))
+            .clickable(onClick = onClick),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = stringResource(R.string.accounts_add_account),
+            style = TextStyle(
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White
+            )
+        )
+    }
 }
 
 /** "1 280,00 $"-style label: Ivy amount formatting + the currency's symbol. */
