@@ -337,7 +337,67 @@ private fun EsimEntryCard(
     palette: CardPaletteColors,
     onClick: () -> Unit
 ) {
-    Box(Modifier.fillMaxWidth().height(48.dp)) {}
+    val textColor = Color(palette.esimText)
+    Row(
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .fillMaxWidth()
+            .clip(CardShape)
+            .background(Color(palette.esimBackground), CardShape)
+            .border(2.dp, CardBorder, CardShape)
+            .clickable(onClick = onClick)
+            .padding(horizontal = 24.dp, vertical = 20.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = stringResource(R.string.esim_title),
+                    style = TextStyle(
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.ExtraBold,
+                        color = textColor
+                    )
+                )
+                Spacer(Modifier.width(10.dp))
+                Box(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(50))
+                        .background(Color(0xFF141414))
+                        .padding(horizontal = 10.dp, vertical = 4.dp)
+                ) {
+                    Text(
+                        text = stringResource(R.string.esim_new_badge),
+                        style = TextStyle(
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.White
+                        )
+                    )
+                }
+            }
+            Spacer(Modifier.height(4.dp))
+            Text(
+                text = stringResource(R.string.esim_entry_sub),
+                style = UI.typo.b2.style(color = textColor.copy(alpha = 0.75f))
+            )
+        }
+        Column(horizontalAlignment = Alignment.End) {
+            Text(
+                text = stringResource(R.string.esim_stay_connected),
+                style = TextStyle(
+                    fontSize = 19.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = textColor
+                )
+            )
+            Spacer(Modifier.height(4.dp))
+            Text(
+                text = stringResource(R.string.esim_from),
+                style = UI.typo.b2.style(color = textColor.copy(alpha = 0.75f))
+            )
+        }
+    }
 }
 
 @Composable
@@ -347,7 +407,89 @@ private fun AccountStackCard(
     tint: Int,
     onClick: () -> Unit
 ) {
-    Box(Modifier.fillMaxWidth().height(48.dp)) {}
+    val account = accountData.account
+    val currency = account.asset.code
+    // Local capture: AccountData is a public API of another module
+    // (:temp:legacy-code), so Kotlin refuses to smart-cast
+    // accountData.balanceBaseCurrency after a null check. A local val can.
+    val convertedBalance = accountData.balanceBaseCurrency
+    Row(
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .fillMaxWidth()
+            .clip(CardShape)
+            .background(Color(tint), CardShape)
+            .border(2.dp, CardBorder, CardShape)
+            .clickable(onClick = onClick)
+            .padding(horizontal = 20.dp, vertical = 18.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Box(
+            modifier = Modifier
+                .size(54.dp)
+                .clip(CircleShape)
+                .background(Color.White, CircleShape)
+                .border(1.5.dp, CardBorder, CircleShape),
+            contentAlignment = Alignment.Center
+        ) {
+            if (account.icon != null) {
+                ItemIconSDefaultIcon(
+                    iconName = account.icon?.id,
+                    defaultIcon = R.drawable.ic_custom_account_s,
+                    tint = CardInk
+                )
+            } else {
+                Text(
+                    text = account.name.value.firstOrNull()?.uppercase() ?: "?",
+                    style = TextStyle(
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.ExtraBold,
+                        color = CardInk
+                    )
+                )
+            }
+        }
+
+        Spacer(Modifier.width(16.dp))
+
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = account.name.value,
+                style = UI.typo.b1.style(
+                    color = CardInk,
+                    fontWeight = FontWeight.ExtraBold
+                )
+            )
+            Spacer(Modifier.height(2.dp))
+            Text(
+                text = if (account.includeInBalance) {
+                    currency
+                } else {
+                    "$currency · ${stringResource(R.string.excluded)}"
+                },
+                style = UI.typo.c.style(color = CardInk.copy(alpha = 0.6f))
+            )
+        }
+
+        Column(horizontalAlignment = Alignment.End) {
+            Text(
+                text = accountData.balance.amountWithSymbol(currency),
+                style = TextStyle(
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = CardInk
+                )
+            )
+            if (currency != baseCurrency && convertedBalance != null) {
+                Spacer(Modifier.height(2.dp))
+                Text(
+                    text = "≈ ${convertedBalance.amountWithSymbol(baseCurrency)} " +
+                        baseCurrency,
+                    style = UI.typo.c.style(color = CardInk.copy(alpha = 0.6f))
+                )
+            }
+        }
+    }
 }
 
 @Composable
@@ -476,4 +618,3 @@ fun AccountsTabCompactUITest(dark: Boolean) {
     }
     PreviewAccountsTab(theme)
 }
-
