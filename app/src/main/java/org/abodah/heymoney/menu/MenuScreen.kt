@@ -61,6 +61,7 @@ import com.ivy.navigation.SearchScreen
 import com.ivy.navigation.SettingsScreen
 import com.ivy.navigation.SetupScreen
 import com.ivy.navigation.MessageScanScreen
+import com.ivy.navigation.CardPalettesScreen
 import com.ivy.navigation.StatementAnalysisScreen
 import com.ivy.navigation.VaultScreen
 import com.ivy.navigation.ShareScreen
@@ -374,6 +375,15 @@ fun BoxWithConstraintsScope.MenuScreen(
                     title = stringResource(R.string.menu_item_exchange_rates)
                 ) {
                     nav.navigateTo(ExchangeRatesScreen)
+                }
+            }
+            item {
+                MenuItemCard(
+                    icon = R.drawable.ic_custom_palette_m,
+                    title = stringResource(R.string.menu_item_palettes),
+                    subtitle = stringResource(R.string.menu_item_palettes_sub)
+                ) {
+                    nav.navigateTo(CardPalettesScreen)
                 }
             }
             item {
