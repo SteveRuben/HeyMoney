@@ -417,3 +417,4 @@ fun AccountsTabCompactUITest(dark: Boolean) {
     }
     PreviewAccountsTab(theme)
 }
+
