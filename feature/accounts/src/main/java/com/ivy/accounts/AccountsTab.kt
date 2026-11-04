@@ -288,48 +288,7 @@ private fun TotalBalanceCard(
     baseCurrency: String,
     totalBalance: Double
 ) {
-    val textColor = Color(palette.totalText)
-    Column(
-        modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .fillMaxWidth()
-            .clip(CardShape)
-            .background(
-                brush = Brush.linearGradient(
-                    colors = listOf(
-                        Color(palette.totalGradientStart),
-                        Color(palette.totalGradientEnd)
-                    )
-                ),
-                shape = CardShape
-            )
-            .border(2.dp, CardBorder, CardShape)
-            .padding(horizontal = 24.dp, vertical = 22.dp)
-    ) {
-        Text(
-            text = stringResource(R.string.accounts_total_label),
-            style = TextStyle(
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Bold,
-                color = textColor.copy(alpha = 0.85f),
-                letterSpacing = 1.2.sp
-            )
-        )
-        Spacer(Modifier.height(8.dp))
-        Text(
-            text = totalBalance.amountWithSymbol(baseCurrency),
-            style = TextStyle(
-                fontSize = 38.sp,
-                fontWeight = FontWeight.ExtraBold,
-                color = textColor
-            )
-        )
-        Spacer(Modifier.height(6.dp))
-        Text(
-            text = stringResource(R.string.accounts_total_converted, baseCurrency),
-            style = UI.typo.b2.style(color = textColor.copy(alpha = 0.85f))
-        )
-    }
+    Box(Modifier.fillMaxWidth().height(48.dp)) {}
 }
 
 @Composable
@@ -337,67 +296,7 @@ private fun EsimEntryCard(
     palette: CardPaletteColors,
     onClick: () -> Unit
 ) {
-    val textColor = Color(palette.esimText)
-    Row(
-        modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .fillMaxWidth()
-            .clip(CardShape)
-            .background(Color(palette.esimBackground), CardShape)
-            .border(2.dp, CardBorder, CardShape)
-            .clickable(onClick = onClick)
-            .padding(horizontal = 24.dp, vertical = 20.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Column(modifier = Modifier.weight(1f)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(
-                    text = stringResource(R.string.esim_title),
-                    style = TextStyle(
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.ExtraBold,
-                        color = textColor
-                    )
-                )
-                Spacer(Modifier.width(10.dp))
-                Box(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(50))
-                        .background(Color(0xFF141414))
-                        .padding(horizontal = 10.dp, vertical = 4.dp)
-                ) {
-                    Text(
-                        text = stringResource(R.string.esim_new_badge),
-                        style = TextStyle(
-                            fontSize = 11.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color.White
-                        )
-                    )
-                }
-            }
-            Spacer(Modifier.height(4.dp))
-            Text(
-                text = stringResource(R.string.esim_entry_sub),
-                style = UI.typo.b2.style(color = textColor.copy(alpha = 0.75f))
-            )
-        }
-        Column(horizontalAlignment = Alignment.End) {
-            Text(
-                text = stringResource(R.string.esim_stay_connected),
-                style = TextStyle(
-                    fontSize = 19.sp,
-                    fontWeight = FontWeight.ExtraBold,
-                    color = textColor
-                )
-            )
-            Spacer(Modifier.height(4.dp))
-            Text(
-                text = stringResource(R.string.esim_from),
-                style = UI.typo.b2.style(color = textColor.copy(alpha = 0.75f))
-            )
-        }
-    }
+    Box(Modifier.fillMaxWidth().height(48.dp)) {}
 }
 
 @Composable
@@ -407,108 +306,12 @@ private fun AccountStackCard(
     tint: Int,
     onClick: () -> Unit
 ) {
-    val account = accountData.account
-    val currency = account.asset.code
-    Row(
-        modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .fillMaxWidth()
-            .clip(CardShape)
-            .background(Color(tint), CardShape)
-            .border(2.dp, CardBorder, CardShape)
-            .clickable(onClick = onClick)
-            .padding(horizontal = 20.dp, vertical = 18.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Box(
-            modifier = Modifier
-                .size(54.dp)
-                .clip(CircleShape)
-                .background(Color.White, CircleShape)
-                .border(1.5.dp, CardBorder, CircleShape),
-            contentAlignment = Alignment.Center
-        ) {
-            if (account.icon != null) {
-                ItemIconSDefaultIcon(
-                    iconName = account.icon?.id,
-                    defaultIcon = R.drawable.ic_custom_account_s,
-                    tint = CardInk
-                )
-            } else {
-                Text(
-                    text = account.name.value.firstOrNull()?.uppercase() ?: "?",
-                    style = TextStyle(
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.ExtraBold,
-                        color = CardInk
-                    )
-                )
-            }
-        }
-
-        Spacer(Modifier.width(16.dp))
-
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = account.name.value,
-                style = UI.typo.b1.style(
-                    color = CardInk,
-                    fontWeight = FontWeight.ExtraBold
-                )
-            )
-            Spacer(Modifier.height(2.dp))
-            Text(
-                text = if (account.includeInBalance) {
-                    currency
-                } else {
-                    "$currency · ${stringResource(R.string.excluded)}"
-                },
-                style = UI.typo.c.style(color = CardInk.copy(alpha = 0.6f))
-            )
-        }
-
-        Column(horizontalAlignment = Alignment.End) {
-            Text(
-                text = accountData.balance.amountWithSymbol(currency),
-                style = TextStyle(
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.ExtraBold,
-                    color = CardInk
-                )
-            )
-            if (currency != baseCurrency && accountData.balanceBaseCurrency != null) {
-                Spacer(Modifier.height(2.dp))
-                Text(
-                    text = "≈ ${accountData.balanceBaseCurrency.amountWithSymbol(baseCurrency)} " +
-                        baseCurrency,
-                    style = UI.typo.c.style(color = CardInk.copy(alpha = 0.6f))
-                )
-            }
-        }
-    }
+    Box(Modifier.fillMaxWidth().height(48.dp)) {}
 }
 
 @Composable
 private fun AddAccountButton(onClick: () -> Unit) {
-    Box(
-        modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .fillMaxWidth()
-            .height(64.dp)
-            .clip(RoundedCornerShape(50))
-            .background(Color(0xFF141414), RoundedCornerShape(50))
-            .clickable(onClick = onClick),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = stringResource(R.string.accounts_add_account),
-            style = TextStyle(
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.White
-            )
-        )
-    }
+    Box(Modifier.fillMaxWidth().height(48.dp)) {}
 }
 
 /** "1 280,00 $"-style label: Ivy amount formatting + the currency's symbol. */
@@ -523,13 +326,13 @@ private fun Double.amountWithSymbol(currencyCode: String): String {
 
 @Preview
 @Composable
-private fun PreviewAccountsTabCompactModeDisabled(theme: Theme = Theme.LIGHT) {
+private fun PreviewAccountsTab(theme: Theme = Theme.LIGHT) {
     IvyWalletPreview(theme = theme) {
         val acc1 = Account(
             id = AccountId(UUID.randomUUID()),
-            name = NotBlankTrimmedString.unsafe("Phyre"),
+            name = NotBlankTrimmedString.unsafe("Desjardins"),
             color = ColorInt(Green.toArgb()),
-            asset = AssetCode.unsafe("USD"),
+            asset = AssetCode.unsafe("CAD"),
             icon = null,
             includeInBalance = true,
             orderNum = 0.0,
@@ -537,159 +340,59 @@ private fun PreviewAccountsTabCompactModeDisabled(theme: Theme = Theme.LIGHT) {
 
         val acc2 = Account(
             id = AccountId(UUID.randomUUID()),
-            name = NotBlankTrimmedString.unsafe("DSK"),
+            name = NotBlankTrimmedString.unsafe("MTN MoMo"),
             color = ColorInt(GreenLight.toArgb()),
-            asset = AssetCode.unsafe("USD"),
+            asset = AssetCode.unsafe("XAF"),
             icon = null,
             includeInBalance = true,
-            orderNum = 0.0,
+            orderNum = 1.0,
         )
 
         val acc3 = Account(
             id = AccountId(UUID.randomUUID()),
-            name = NotBlankTrimmedString.unsafe("Revolut"),
-            color = ColorInt(Green.toArgb()),
-            asset = AssetCode.unsafe("USD"),
-            icon = IconAsset.unsafe("revolut"),
-            includeInBalance = true,
-            orderNum = 0.0,
-        )
-
-        val acc4 = Account(
-            id = AccountId(UUID.randomUUID()),
-            name = NotBlankTrimmedString.unsafe("Cash"),
+            name = NotBlankTrimmedString.unsafe("Cash USD"),
             color = ColorInt(Green.toArgb()),
             asset = AssetCode.unsafe("USD"),
             icon = IconAsset.unsafe("cash"),
             includeInBalance = true,
-            orderNum = 0.0,
+            orderNum = 2.0,
         )
         val state = AccountsState(
-            baseCurrency = "BGN",
+            baseCurrency = "CAD",
             accountsData = persistentListOf(
                 AccountData(
                     account = acc1,
-                    balance = 2125.0,
+                    balance = 8240.10,
                     balanceBaseCurrency = null,
                     monthlyExpenses = 920.0,
                     monthlyIncome = 3045.0
                 ),
                 AccountData(
                     account = acc2,
-                    balance = 12125.21,
-                    balanceBaseCurrency = null,
+                    balance = 532480.0,
+                    balanceBaseCurrency = 1280.0,
                     monthlyExpenses = 1350.50,
                     monthlyIncome = 8000.48
                 ),
                 AccountData(
                     account = acc3,
                     balance = 1200.0,
-                    balanceBaseCurrency = 1979.64,
+                    balanceBaseCurrency = null,
                     monthlyExpenses = 750.0,
                     monthlyIncome = 1000.30
-                ),
-                AccountData(
-                    account = acc4,
-                    balance = 820.0,
-                    balanceBaseCurrency = null,
-                    monthlyExpenses = 340.0,
-                    monthlyIncome = 400.0
-                ),
+                )
             ),
-            totalBalanceWithExcluded = "25.54",
-            totalBalanceWithExcludedText = "BGN 25.54",
-            totalBalanceWithoutExcluded = "25.54",
-            totalBalanceWithoutExcludedText = "BGN 25.54",
+            totalBalanceWithExcluded = "9520.10",
+            totalBalanceWithExcludedText = "CAD 9520.10",
+            totalBalanceWithoutExcluded = "9520.10",
+            totalBalanceWithoutExcludedText = "CAD 9520.10",
             reorderVisible = false,
             compactAccountsModeEnabled = false,
-            hideTotalBalance = false
-        )
-        UI(state = state)
-    }
-}
-
-@Preview
-@Composable
-private fun PreviewAccountsTabCompactModeEnabled(theme: Theme = Theme.LIGHT) {
-    IvyWalletPreview(theme = theme) {
-        val acc1 = Account(
-            id = AccountId(UUID.randomUUID()),
-            name = NotBlankTrimmedString.unsafe("Phyre"),
-            color = ColorInt(Green.toArgb()),
-            asset = AssetCode.unsafe("USD"),
-            icon = null,
-            includeInBalance = true,
-            orderNum = 0.0,
-        )
-
-        val acc2 = Account(
-            id = AccountId(UUID.randomUUID()),
-            name = NotBlankTrimmedString.unsafe("DSK"),
-            color = ColorInt(GreenLight.toArgb()),
-            asset = AssetCode.unsafe("USD"),
-            icon = null,
-            includeInBalance = true,
-            orderNum = 0.0,
-        )
-
-        val acc3 = Account(
-            id = AccountId(UUID.randomUUID()),
-            name = NotBlankTrimmedString.unsafe("Revolut"),
-            color = ColorInt(Green.toArgb()),
-            asset = AssetCode.unsafe("USD"),
-            icon = IconAsset.unsafe("revolut"),
-            includeInBalance = true,
-            orderNum = 0.0,
-        )
-
-        val acc4 = Account(
-            id = AccountId(UUID.randomUUID()),
-            name = NotBlankTrimmedString.unsafe("Cash"),
-            color = ColorInt(Green.toArgb()),
-            asset = AssetCode.unsafe("USD"),
-            icon = IconAsset.unsafe("cash"),
-            includeInBalance = true,
-            orderNum = 0.0,
-        )
-        val state = AccountsState(
-            baseCurrency = "BGN",
-            accountsData = persistentListOf(
-                AccountData(
-                    account = acc1,
-                    balance = 2125.0,
-                    balanceBaseCurrency = null,
-                    monthlyExpenses = 920.0,
-                    monthlyIncome = 3045.0
-                ),
-                AccountData(
-                    account = acc2,
-                    balance = 12125.21,
-                    balanceBaseCurrency = null,
-                    monthlyExpenses = 1350.50,
-                    monthlyIncome = 8000.48
-                ),
-                AccountData(
-                    account = acc3,
-                    balance = 1200.0,
-                    balanceBaseCurrency = 1979.64,
-                    monthlyExpenses = 750.0,
-                    monthlyIncome = 1000.30
-                ),
-                AccountData(
-                    account = acc4,
-                    balance = 820.0,
-                    balanceBaseCurrency = null,
-                    monthlyExpenses = 340.0,
-                    monthlyIncome = 400.0
-                ),
-            ),
-            totalBalanceWithExcluded = "25.54",
-            totalBalanceWithExcludedText = "BGN 25.54",
-            totalBalanceWithoutExcluded = "25.54",
-            totalBalanceWithoutExcludedText = "BGN 25.54",
-            reorderVisible = false,
-            compactAccountsModeEnabled = true,
-            hideTotalBalance = false
+            hideTotalBalance = false,
+            palette = CardPalettes.preset(CardPalettes.PRESET_BLUE),
+            unconvertedSubtotals = persistentListOf(
+                CurrencySubtotal(currency = "USD", amount = 1200.0)
+            )
         )
         UI(state = state)
     }
@@ -702,7 +405,7 @@ fun AccountsTabNonCompactUITest(dark: Boolean) {
         true -> Theme.DARK
         false -> Theme.LIGHT
     }
-    PreviewAccountsTabCompactModeDisabled(theme)
+    PreviewAccountsTab(theme)
 }
 
 /** For screen shot testing **/
@@ -712,5 +415,5 @@ fun AccountsTabCompactUITest(dark: Boolean) {
         true -> Theme.DARK
         false -> Theme.LIGHT
     }
-    PreviewAccountsTabCompactModeEnabled(theme)
+    PreviewAccountsTab(theme)
 }
