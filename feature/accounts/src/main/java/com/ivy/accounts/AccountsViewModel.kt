@@ -10,6 +10,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewModelScope
 import com.ivy.base.legacy.SharedPrefs
+import com.ivy.base.palettes.CardPaletteStore
+import com.ivy.base.palettes.CardPalettes
 import com.ivy.base.time.TimeConverter
 import com.ivy.base.time.TimeProvider
 import com.ivy.data.DataObserver
@@ -17,6 +19,7 @@ import com.ivy.data.DataWriteEvent
 import com.ivy.data.repository.AccountRepository
 import com.ivy.domain.features.Features
 import com.ivy.legacy.IvyWalletCtx
+import com.ivy.legacy.domain.deprecated.logic.AccountCreator
 import com.ivy.legacy.data.model.AccountData
 import com.ivy.legacy.data.model.toCloseTimeRange
 import com.ivy.legacy.utils.format
@@ -51,6 +54,8 @@ class AccountsViewModel @Inject constructor(
     private val features: Features,
     private val timeProvider: TimeProvider,
     private val timeConverter: TimeConverter,
+    private val cardPaletteStore: CardPaletteStore,
+    private val accountCreator: AccountCreator,
 ) : ComposeViewModel<AccountsState, AccountsEvent>() {
     private var baseCurrency by mutableStateOf("")
     private var accountsData by mutableStateOf(listOf<AccountData>())
@@ -59,8 +64,17 @@ class AccountsViewModel @Inject constructor(
     private var totalBalanceWithoutExcluded by mutableStateOf("")
     private var totalBalanceWithoutExcludedText by mutableStateOf("")
     private var reorderVisible by mutableStateOf(false)
+    private var paletteColors by mutableStateOf(
+        CardPalettes.preset(CardPalettes.DEFAULT_PRESET)
+    )
+    private var unconvertedSubtotals by mutableStateOf(listOf<CurrencySubtotal>())
 
     init {
+        viewModelScope.launch {
+            cardPaletteStore.selection.collectLatest {
+                paletteColors = cardPaletteStore.colors()
+            }
+        }
         viewModelScope.launch {
             dataObserver.writeEvents.collectLatest { event ->
                 when (event) {
@@ -91,7 +105,9 @@ class AccountsViewModel @Inject constructor(
             totalBalanceWithoutExcludedText = getTotalBalanceWithoutExcludedText(),
             reorderVisible = getReorderVisible(),
             compactAccountsModeEnabled = getCompactAccountsMode(),
-            hideTotalBalance = getHideTotalBalance()
+            hideTotalBalance = getHideTotalBalance(),
+            palette = paletteColors,
+            unconvertedSubtotals = unconvertedSubtotals.toImmutableList()
         )
     }
 
@@ -145,6 +161,9 @@ class AccountsViewModel @Inject constructor(
             when (event) {
                 is AccountsEvent.OnReorder -> reorder(event.reorderedList)
                 is AccountsEvent.OnReorderModalVisible -> reorderModalVisible(event.reorderVisible)
+                is AccountsEvent.OnCreateAccount -> accountCreator.createAccount(event.data) {
+                    onStart()
+                }
             }
         }
     }
@@ -201,6 +220,25 @@ class AccountsViewModel @Inject constructor(
 
         baseCurrency = baseCurrencyCode
         accountsData = accountsDataList
+        // Honest totals: an account whose currency has no exchange rate to the
+        // base currency gets balanceBaseCurrency == null from AccountDataAct
+        // (and CalcWalletBalanceAct counts it as zero). Surface those balances
+        // as separate per-currency subtotals instead of hiding them.
+        unconvertedSubtotals = accountsDataList
+            .filter {
+                it.account.includeInBalance &&
+                    it.account.asset.code != baseCurrencyCode &&
+                    it.balanceBaseCurrency == null &&
+                    it.balance != 0.0
+            }
+            .groupBy { it.account.asset.code }
+            .map { (currency, accounts) ->
+                CurrencySubtotal(
+                    currency = currency,
+                    amount = accounts.sumOf { it.balance }
+                )
+            }
+            .sortedBy { it.currency }
         totalBalanceWithExcluded = totalBalanceWithExcludedAccounts.toString()
         totalBalanceWithExcludedText = context.getString(
             R.string.total,
