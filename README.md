@@ -21,3 +21,5 @@ Your data stays on your device. See [terms](docs/terms.md) and [privacy](docs/pr
 ## License
 
 GNU General Public License v3.0, see [LICENSE](LICENSE) and [NOTICE](NOTICE).
+
+<!-- chore: trigger CI -->
