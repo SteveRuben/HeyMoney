@@ -180,3 +180,7 @@ data object VaultScreen : Screen
 data object MessageScanScreen : Screen
 
 data object MonthlyBudgetScreen : Screen
+
+data object EsimScreen : Screen
+
+data object CardPalettesScreen : Screen
