@@ -69,6 +69,7 @@ import com.ivy.navigation.CategoriesScreen
 import com.ivy.navigation.IvyPreview
 import com.ivy.navigation.AlertsScreen
 import com.ivy.navigation.AssistantScreen
+import com.ivy.navigation.MonthlyChartScreen
 import com.ivy.navigation.NewsScreen
 import com.ivy.navigation.ShareScreen
 import com.ivy.navigation.LoansScreen
@@ -497,12 +498,12 @@ private fun QuickAccess(
             Spacer(Modifier.weight(1f))
 
             val context = LocalContext.current
-//        MoreMenuButton(
-//            icon = R.drawable.home_more_menu_reports,
-//            label = "Charts"
-//        ) {
-//            ivyContext.navigateTo(Screen.Charts)
-//        }
+            MoreMenuButton(
+                icon = R.drawable.home_more_menu_reports,
+                label = stringResource(R.string.chart_title)
+            ) {
+                nav.navigateTo(MonthlyChartScreen)
+            }
 
             val rootScreen = rootScreen()
             MoreMenuButton(
@@ -572,7 +573,7 @@ private fun QuickAccess(
 
             MoreMenuButton(
                 icon = R.drawable.ic_vue_messages_device_msg,
-                label = "Bank alerts",
+                label = stringResource(R.string.menu_item_alerts),
             ) {
                 nav.navigateTo(AlertsScreen)
             }
@@ -581,7 +582,7 @@ private fun QuickAccess(
 
             MoreMenuButton(
                 icon = R.drawable.ic_vue_messages_direct,
-                label = "Share",
+                label = stringResource(R.string.menu_item_qr_share),
             ) {
                 nav.navigateTo(ShareScreen)
             }

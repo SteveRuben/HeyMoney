@@ -18,6 +18,7 @@ import com.ivy.navigation.DisclaimerScreen
 import com.ivy.navigation.EditTransactionScreen
 import com.ivy.navigation.MainScreen
 import com.ivy.navigation.ScanReceiptScreen
+import com.ivy.navigation.SetupScreen
 import com.ivy.navigation.Navigation
 import com.ivy.navigation.OnboardingScreen
 import com.ivy.ui.R
@@ -48,6 +49,9 @@ class RootViewModel @Inject constructor(
 
     companion object {
         const val EXTRA_ADD_TRANSACTION_TYPE = "add_transaction_type_extra"
+
+        /** Set by the setup reminder notification: open the Configuration screen. */
+        const val EXTRA_OPEN_SETUP = "open_setup_extra"
 
         const val USER_INACTIVITY_TIME_LIMIT = 60 // Time in seconds
     }
@@ -107,6 +111,12 @@ class RootViewModel @Inject constructor(
 
     @Suppress("SwallowedException")
     private fun handleSpecialStart(intent: Intent): Boolean {
+        if (intent.getBooleanExtra(EXTRA_OPEN_SETUP, false)) {
+            nav.navigateTo(MainScreen)
+            nav.navigateTo(SetupScreen)
+            return true
+        }
+
         if (intent.getStringExtra(EXTRA_ADD_TRANSACTION_TYPE) == "SCAN_RECEIPT") {
             nav.navigateTo(MainScreen)
             nav.navigateTo(ScanReceiptScreen)

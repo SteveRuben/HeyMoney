@@ -5,12 +5,24 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.BoxWithConstraintsScope
 import androidx.compose.runtime.Composable
 import com.ivy.attributions.AttributionsScreenImpl
-import org.abodah.heymoney.ai.AiSettingsScreen
 import org.abodah.heymoney.alerts.AlertsScreen
 import org.abodah.heymoney.receipts.LiveScanScreen
 import org.abodah.heymoney.assistant.AssistantScreen
 import org.abodah.heymoney.news.NewsScreen
 import org.abodah.heymoney.share.ShareScreen
+import org.abodah.heymoney.rules.CategoryRulesScreen
+import org.abodah.heymoney.subscriptions.SubscriptionGuideScreen
+import org.abodah.heymoney.subscriptions.SubscriptionsScreen
+import org.abodah.heymoney.networth.NetWorthScreen
+import org.abodah.heymoney.chart.MonthlyChartScreen
+import org.abodah.heymoney.menu.MenuScreen
+import org.abodah.heymoney.setup.SetupScreen
+import org.abodah.heymoney.messages.MessageScanScreen
+import org.abodah.heymoney.statement.StatementAnalysisScreen
+import org.abodah.heymoney.vault.VaultScreen
+import org.abodah.heymoney.budget.MonthlyBudgetScreen
+import org.abodah.heymoney.esim.EsimScreen
+import org.abodah.heymoney.palettes.CardPalettesScreen
 import com.ivy.balance.BalanceScreen
 import com.ivy.budgets.BudgetScreen
 import com.ivy.categories.CategoriesScreen
@@ -23,7 +35,6 @@ import com.ivy.importdata.csvimport.ImportCSVScreen
 import com.ivy.loans.loan.LoansScreen
 import com.ivy.loans.loandetails.LoanDetailsScreen
 import com.ivy.main.MainScreen
-import com.ivy.navigation.AiSettingsScreen
 import com.ivy.navigation.AlertsScreen
 import com.ivy.navigation.ScanReceiptScreen
 import com.ivy.navigation.AssistantScreen
@@ -34,6 +45,7 @@ import com.ivy.navigation.BalanceScreen
 import com.ivy.navigation.BudgetScreen
 import com.ivy.navigation.CSVScreen
 import com.ivy.navigation.CategoriesScreen
+import com.ivy.navigation.CategoryRulesScreen
 import com.ivy.navigation.ContributorsScreen
 import com.ivy.navigation.DisclaimerScreen
 import com.ivy.navigation.EditPlannedScreen
@@ -53,6 +65,18 @@ import com.ivy.navigation.ReportScreen
 import com.ivy.navigation.Screen
 import com.ivy.navigation.SearchScreen
 import com.ivy.navigation.SettingsScreen
+import com.ivy.navigation.SubscriptionDetailsScreen
+import com.ivy.navigation.SubscriptionsScreen
+import com.ivy.navigation.NetWorthScreen
+import com.ivy.navigation.MonthlyChartScreen
+import com.ivy.navigation.MenuScreen
+import com.ivy.navigation.SetupScreen
+import com.ivy.navigation.MessageScanScreen
+import com.ivy.navigation.MonthlyBudgetScreen
+import com.ivy.navigation.EsimScreen
+import com.ivy.navigation.CardPalettesScreen
+import com.ivy.navigation.StatementAnalysisScreen
+import com.ivy.navigation.VaultScreen
 import com.ivy.navigation.TransactionsScreen
 import com.ivy.onboarding.OnboardingScreen
 import com.ivy.piechart.PieChartStatisticScreen
@@ -79,10 +103,22 @@ fun BoxWithConstraintsScope.IvyNavGraph(screen: Screen?) {
         is MainScreen -> MainScreen(screen = screen)
         is AlertsScreen -> AlertsScreen()
         is ScanReceiptScreen -> LiveScanScreen()
-        is AiSettingsScreen -> AiSettingsScreen()
         is AssistantScreen -> AssistantScreen()
         is NewsScreen -> NewsScreen()
         is ShareScreen -> ShareScreen()
+        is CategoryRulesScreen -> CategoryRulesScreen()
+        is SubscriptionsScreen -> SubscriptionsScreen()
+        is SubscriptionDetailsScreen -> SubscriptionGuideScreen(subscriptionKey = screen.subscriptionKey)
+        is NetWorthScreen -> NetWorthScreen()
+        is MonthlyChartScreen -> MonthlyChartScreen()
+        is MenuScreen -> MenuScreen()
+        is SetupScreen -> SetupScreen()
+        is StatementAnalysisScreen -> StatementAnalysisScreen()
+        is VaultScreen -> VaultScreen()
+        is MessageScanScreen -> MessageScanScreen()
+        is MonthlyBudgetScreen -> MonthlyBudgetScreen()
+        is EsimScreen -> EsimScreen()
+        is CardPalettesScreen -> CardPalettesScreen()
         is OnboardingScreen -> OnboardingScreen(screen = screen)
         is ExchangeRatesScreen -> ExchangeRatesScreen()
         is EditTransactionScreen -> EditTransactionScreen(screen = screen)

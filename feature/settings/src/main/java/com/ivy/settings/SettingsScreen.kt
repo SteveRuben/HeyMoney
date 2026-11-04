@@ -49,9 +49,6 @@ import com.ivy.legacy.rootScreen
 import com.ivy.legacy.utils.drawColoredShadow
 import com.ivy.navigation.AttributionsScreen
 import com.ivy.navigation.ContributorsScreen
-import com.ivy.navigation.ExchangeRatesScreen
-import com.ivy.navigation.FeaturesScreen
-import com.ivy.navigation.ImportScreen
 import com.ivy.navigation.Navigation
 import com.ivy.navigation.ReleasesScreen
 import com.ivy.navigation.navigation
@@ -60,7 +57,6 @@ import com.ivy.ui.R
 import com.ivy.wallet.domain.data.IvyCurrency
 import com.ivy.wallet.ui.theme.Blue
 import com.ivy.wallet.ui.theme.Gradient
-import com.ivy.wallet.ui.theme.GradientGreen
 import com.ivy.wallet.ui.theme.GradientIvy
 import com.ivy.wallet.ui.theme.Gray
 import com.ivy.wallet.ui.theme.MediumBlack
@@ -73,7 +69,6 @@ import com.ivy.wallet.ui.theme.modal.ChooseStartDateOfMonthModal
 import com.ivy.wallet.ui.theme.modal.CurrencyModal
 import com.ivy.wallet.ui.theme.modal.DeleteModal
 import com.ivy.wallet.ui.theme.modal.NameModal
-import com.ivy.wallet.ui.theme.modal.ProgressModal
 import java.util.Locale
 
 @ExperimentalFoundationApi
@@ -81,19 +76,12 @@ import java.util.Locale
 fun BoxWithConstraintsScope.SettingsScreen() {
     val viewModel: SettingsViewModel = screenScopedViewModel()
     val uiState = viewModel.uiState()
-    val rootScreen = rootScreen()
 
     UI(
         currencyCode = uiState.currencyCode,
-        theme = uiState.currentTheme,
-        onSwitchTheme = {
-            viewModel.onEvent(SettingsEvent.SwitchTheme)
-        },
-        lockApp = uiState.lockApp,
         showNotifications = uiState.showNotifications,
         hideCurrentBalance = uiState.hideCurrentBalance,
         hideIncome = uiState.hideIncome,
-        progressState = uiState.progressState,
         treatTransfersAsIncomeExpense = uiState.treatTransfersAsIncomeExpense,
         nameLocalAccount = uiState.name,
         startDateOfMonth = uiState.startDateOfMonth.toInt(),
@@ -103,15 +91,6 @@ fun BoxWithConstraintsScope.SettingsScreen() {
         },
         onSetName = {
             viewModel.onEvent(SettingsEvent.SetName(it))
-        },
-        onBackupData = {
-            viewModel.onEvent(SettingsEvent.BackupData(rootScreen))
-        },
-        onExportToCSV = {
-            viewModel.onEvent(SettingsEvent.ExportToCsv(rootScreen))
-        },
-        onSetLockApp = {
-            viewModel.onEvent(SettingsEvent.SetLockApp(it))
         },
         onSetShowNotifications = {
             viewModel.onEvent(SettingsEvent.SetShowNotifications(it))
@@ -145,9 +124,6 @@ fun BoxWithConstraintsScope.SettingsScreen() {
 @Suppress("LongMethod")
 private fun BoxWithConstraintsScope.UI(
     currencyCode: String,
-    theme: Theme,
-    onSwitchTheme: () -> Unit,
-    lockApp: Boolean,
     nameLocalAccount: String?,
     languageOptionVisible: Boolean,
     onSetCurrency: (String) -> Unit,
@@ -155,12 +131,8 @@ private fun BoxWithConstraintsScope.UI(
     showNotifications: Boolean = true,
     hideCurrentBalance: Boolean = false,
     hideIncome: Boolean = false,
-    progressState: Boolean = false,
     treatTransfersAsIncomeExpense: Boolean = false,
     onSetName: (String) -> Unit = {},
-    onBackupData: () -> Unit = {},
-    onExportToCSV: () -> Unit = {},
-    onSetLockApp: (Boolean) -> Unit = {},
     onSetShowNotifications: (Boolean) -> Unit = {},
     onSetTreatTransfersAsIncExp: (Boolean) -> Unit = {},
     onSetHideCurrentBalance: (Boolean) -> Unit = {},
@@ -238,73 +210,9 @@ private fun BoxWithConstraintsScope.UI(
         }
 
         item {
-            SettingsSectionDivider(text = stringResource(R.string.import_export))
-
-            Spacer(Modifier.height(16.dp))
-
-            val nav = navigation()
-            ExportCSV {
-                onExportToCSV()
-            }
-
-            Spacer(Modifier.height(12.dp))
-
-            SettingsDefaultButton(
-                icon = R.drawable.ic_vue_security_shield,
-                text = stringResource(R.string.backup_data),
-                iconPadding = 8.dp
-            ) {
-                onBackupData()
-            }
-
-            Spacer(Modifier.height(12.dp))
-
-            SettingsPrimaryButton(
-                icon = R.drawable.ic_export_csv,
-                text = stringResource(R.string.import_data),
-                backgroundGradient = GradientGreen
-            ) {
-                nav.navigateTo(
-                    ImportScreen(
-                        launchedFromOnboarding = false
-                    )
-                )
-            }
-        }
-
-        item {
             SettingsSectionDivider(text = stringResource(R.string.app_settings))
 
             Spacer(Modifier.height(16.dp))
-
-            AppThemeButton(
-                icon = when (theme) {
-                    Theme.LIGHT -> R.drawable.home_more_menu_light_mode
-                    Theme.DARK -> R.drawable.home_more_menu_dark_mode
-                    Theme.AMOLED_DARK -> R.drawable.home_more_menu_amoled_dark_mode
-                    Theme.AUTO -> R.drawable.home_more_menu_auto_mode
-                },
-                label = when (theme) {
-                    Theme.LIGHT -> stringResource(R.string.light_mode)
-                    Theme.DARK -> stringResource(R.string.dark_mode)
-                    Theme.AMOLED_DARK -> stringResource(R.string.amoled_mode)
-                    Theme.AUTO -> stringResource(R.string.auto_mode)
-                }
-            ) {
-                onSwitchTheme()
-            }
-
-            Spacer(Modifier.height(12.dp))
-
-            val nav = navigation()
-//            SettingsDefaultButton(
-//                icon = R.drawable.ic_custom_atom_m,
-//                text = "Features"
-//            ) {
-//                nav.navigateTo(FeaturesScreen)
-//            }
-//
-//            Spacer(Modifier.height(12.dp))
 
             if (languageOptionVisible) {
                 SettingsDefaultButton(
@@ -318,24 +226,6 @@ private fun BoxWithConstraintsScope.UI(
 
                 Spacer(Modifier.height(12.dp))
             }
-
-            SettingsDefaultButton(
-                icon = R.drawable.ic_currency,
-                text = stringResource(R.string.exchange_rates),
-            ) {
-                nav.navigateTo(ExchangeRatesScreen)
-            }
-
-            Spacer(Modifier.height(12.dp))
-
-            AppSwitch(
-                lockApp = lockApp,
-                onSetLockApp = onSetLockApp,
-                text = stringResource(R.string.lock_app),
-                icon = R.drawable.ic_custom_fingerprint_m
-            )
-
-            Spacer(Modifier.height(12.dp))
 
             AppSwitch(
                 lockApp = showNotifications,
@@ -381,12 +271,6 @@ private fun BoxWithConstraintsScope.UI(
             ) {
                 chooseStartDateOfMonthVisible = true
             }
-
-            Spacer(Modifier.height(12.dp))
-
-            CustomFeatures(
-                onClick = { nav.navigateTo(FeaturesScreen) }
-            )
         }
 
 //        item {
@@ -557,12 +441,6 @@ private fun BoxWithConstraintsScope.UI(
             deleteCloudDataModalVisible = false
         }
     )
-
-    ProgressModal(
-        title = stringResource(R.string.exporting_data),
-        description = stringResource(R.string.exporting_data_description),
-        visible = progressState
-    )
 }
 
 @Composable
@@ -604,35 +482,6 @@ private fun StartDateOfMonth(
         )
 
         Spacer(Modifier.width(32.dp))
-    }
-}
-
-@Composable
-private fun CustomFeatures(
-    onClick: () -> Unit
-) {
-    SettingsButtonRow(
-        onClick = onClick
-    ) {
-        Spacer(Modifier.width(12.dp))
-
-        IvyIconScaled(
-            icon = R.drawable.ic_custom_programming_m,
-            tint = UI.colors.pureInverse,
-            iconScale = IconScale.M,
-            padding = 0.dp
-        )
-
-        Spacer(modifier = Modifier.width(8.dp))
-
-        Text(
-            modifier = Modifier.padding(vertical = 20.dp),
-            text = stringResource(R.string.advanced_features),
-            style = UI.typo.b2.style(
-                color = UI.colors.pureInverse,
-                fontWeight = FontWeight.Bold
-            )
-        )
     }
 }
 
@@ -693,23 +542,6 @@ private fun Attributions() {
     ) {
         nav.navigateTo(AttributionsScreen)
     }
-}
-
-@Composable
-private fun AppThemeButton(
-    @DrawableRes icon: Int,
-    label: String,
-    onClick: () -> Unit
-) {
-    SettingsPrimaryButton(
-        icon = icon,
-        text = label,
-        backgroundGradient = Gradient.solid(UI.colors.medium),
-        textColor = UI.colors.pureInverse,
-        iconPadding = 6.dp,
-        description = stringResource(R.string.tap_to_switch_theme),
-        onClick = onClick
-    )
 }
 
 @Composable
@@ -842,20 +674,6 @@ private fun AccountCardLocalAccount(
         )
 
         Spacer(Modifier.width(12.dp))
-    }
-}
-
-@Composable
-private fun ExportCSV(
-    onExportToCSV: () -> Unit
-) {
-    SettingsDefaultButton(
-        icon = R.drawable.ic_vue_pc_printer,
-        text = stringResource(R.string.export_to_csv),
-        iconPadding = 6.dp,
-        description = stringResource(R.string.do_not_use_for_backup_purposes)
-    ) {
-        onExportToCSV()
     }
 }
 
@@ -1130,9 +948,6 @@ private fun Preview(theme: Theme = Theme.LIGHT) {
     IvyWalletPreview(theme) {
         UI(
             nameLocalAccount = null,
-            theme = Theme.AUTO,
-            onSwitchTheme = {},
-            lockApp = false,
             currencyCode = "BGN",
             onSetCurrency = {},
             languageOptionVisible = true

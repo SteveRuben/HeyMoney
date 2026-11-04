@@ -31,6 +31,7 @@ import com.ivy.legacy.utils.clickableNoIndication
 import com.ivy.legacy.utils.format
 import com.ivy.legacy.utils.rememberInteractionSource
 import com.ivy.navigation.BudgetScreen
+import com.ivy.navigation.MonthlyBudgetScreen
 import com.ivy.navigation.navigation
 import com.ivy.navigation.screenScopedViewModel
 import com.ivy.ui.R
@@ -76,6 +77,8 @@ private fun BoxWithConstraintsScope.UI(
         )
 
         Spacer(Modifier.height(8.dp))
+
+        MonthlyBudgetEntry()
 
         for (item in state.budgets) {
             Spacer(Modifier.height(24.dp))
@@ -264,6 +267,35 @@ private fun Toolbar(
 }
 
 @SuppressLint("ComposeContentEmitterReturningValues", "ComposeMultipleContentEmitters")
+/**
+ * Entry to the zero-based "Monthly budget" view (HeyMoney): the legacy
+ * budgets below stay standalone caps, the monthly view is where income is
+ * assigned to categories, YNAB-style.
+ */
+@Composable
+private fun MonthlyBudgetEntry() {
+    val nav = navigation()
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickableNoIndication(rememberInteractionSource()) {
+                nav.navigateTo(MonthlyBudgetScreen)
+            }
+            .padding(horizontal = 24.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        IvyIcon(icon = R.drawable.ic_budget_s)
+        Spacer(Modifier.width(12.dp))
+        Text(
+            text = stringResource(R.string.zb_open_monthly),
+            style = UI.typo.b1.style(
+                color = UI.colors.pureInverse,
+                fontWeight = FontWeight.ExtraBold
+            )
+        )
+    }
+}
+
 @Composable
 private fun BudgetItem(
     displayBudget: DisplayBudget,

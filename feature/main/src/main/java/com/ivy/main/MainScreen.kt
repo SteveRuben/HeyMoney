@@ -20,6 +20,7 @@ import com.ivy.legacy.ivyWalletCtx
 import com.ivy.legacy.utils.onScreenStart
 import com.ivy.navigation.EditPlannedScreen
 import com.ivy.navigation.EditTransactionScreen
+import com.ivy.navigation.MenuScreen
 import com.ivy.navigation.ScanReceiptScreen
 import com.ivy.navigation.MainScreen
 import com.ivy.navigation.navigation
@@ -108,6 +109,10 @@ private fun BoxWithConstraintsScope.UI(
 
         onScanReceipt = {
             nav.navigateTo(ScanReceiptScreen)
+        },
+
+        onOpenMenu = {
+            nav.navigateTo(MenuScreen)
         },
 
         showAddAccountModal = {

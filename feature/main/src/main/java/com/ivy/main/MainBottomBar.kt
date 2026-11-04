@@ -84,6 +84,7 @@ fun BoxWithConstraintsScope.BottomBar(
     onAddPlannedPayment: () -> Unit,
     onScanReceipt: () -> Unit,
 
+    onOpenMenu: () -> Unit,
     showAddAccountModal: () -> Unit,
 ) {
     val ivyContext = ivyWalletCtx()
@@ -136,16 +137,22 @@ fun BoxWithConstraintsScope.BottomBar(
             selectTab(MainTab.HOME)
         }
 
-        Spacer(Modifier.width(FAB_BUTTON_SIZE))
-
         Tab(
             icon = R.drawable.ic_accounts,
             name = stringResource(R.string.accounts),
             selected = tab == MainTab.ACCOUNTS,
-            selectedColor = Green
+            selectedColor = Green,
+            weight = 1f
         ) {
             selectTab(MainTab.ACCOUNTS)
         }
+
+        Spacer(Modifier.width(FAB_BUTTON_SIZE))
+
+        MenuTab(
+            weight = 2f,
+            onClick = onOpenMenu
+        )
     }
 
     if (expandedBackgroundOffset < screenHeightDp) {
@@ -641,11 +648,12 @@ private fun RowScope.Tab(
     name: String,
     selected: Boolean,
     selectedColor: Color,
+    weight: Float = 1f,
     onClick: () -> Unit,
 ) {
     Row(
         modifier = Modifier
-            .weight(1f)
+            .weight(weight)
             .clip(UI.shapes.rFull)
             .clickable(onClick = onClick)
             .padding(top = 12.dp, bottom = 16.dp)
@@ -669,5 +677,42 @@ private fun RowScope.Tab(
                 )
             )
         }
+    }
+}
+
+/**
+ * Permanent entry to the single Menu screen. Unlike the tabs it is not a
+ * [MainTab]: it pushes the Menu screen above the current tab, and its label
+ * always stays visible so the entry point is never hidden.
+ */
+@Composable
+private fun RowScope.MenuTab(
+    weight: Float,
+    onClick: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .weight(weight)
+            .clip(UI.shapes.rFull)
+            .clickable(onClick = onClick)
+            .padding(top = 12.dp, bottom = 16.dp)
+            .testTag("menu"),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        IvyIcon(
+            icon = R.drawable.ic_menu_grid,
+            tint = UI.colors.pureInverse
+        )
+
+        Spacer(modifier = Modifier.width(4.dp))
+
+        Text(
+            text = stringResource(R.string.menu_title),
+            style = UI.typo.c.style(
+                fontWeight = FontWeight.Bold,
+                color = UI.colors.pureInverse
+            )
+        )
     }
 }
