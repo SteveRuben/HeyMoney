@@ -3,9 +3,13 @@ name: 'Gradle Wrapper Upgrade'
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '0 8 * * 1'
 
-jobs:
+permissions:
+  contents: write
+  pull-requests: write
+  
+  jobs:
   upgrade-gradle-wrapper:
     runs-on: ubuntu-latest
     env:
